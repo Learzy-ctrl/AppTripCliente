@@ -4,6 +4,7 @@
              x:Class="AppTripCliente.View.Login.Login"
              BackgroundColor="White"
              NavigationPage.HasNavigationBar="False">
+    
     <Grid >
         <Grid.RowDefinitions>
             <RowDefinition Height="1*" />
@@ -68,6 +69,6 @@
                 </Label.GestureRecognizers>
             </Label>
         </StackLayout >
-        
+        <Frame />
     </Grid> 
 </ContentPage>

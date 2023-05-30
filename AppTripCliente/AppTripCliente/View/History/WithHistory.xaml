@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppTripCliente.View.History.WithHistory">
+    <Grid RowDefinitions=".15*,*">
+        <Grid Grid.Row="0">
+            <Label Text="Presiona en algun viaje para ver su detalle"
+                   TextColor="Black"
+                   FontAttributes="Bold"
+                   FontSize="18"
+                   Margin="15"/>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid RowDefinitions="2*,2*,2*,2*,2*">
+                <Frame BackgroundColor="#F0F0F0"
+                       HorizontalOptions="CenterAndExpand"
+                       VerticalOptions="CenterAndExpand"
+                       CornerRadius="15">
+                    <Frame CornerRadius="15"
+                           Margin="-10">
+                        <Grid RowDefinitions="5*,5*">
+                            <StackLayout Orientation="Horizontal"
+                                         Grid.Row="0">
+                                <Label Text="Viaje a: "
+                                       TextColor="Black"
+                                       FontAttributes="Bold" />
+                                <Label Text="Punto Destino asignada"
+                                       TextColor="Black"
+                                       FontAttributes="Bold" />
+                            </StackLayout>
+                            <Grid ColumnDefinitions="2*,4*,3*"
+                                  Grid.Row="1">
+                                <StackLayout Grid.Column="1"
+                                             Orientation="Horizontal">
+                                    <Label Text="Fecha"
+                                           TextColor="Black"
+                                           FontAttributes="Bold" />
+                                    <Label Text="dd/mm/aaaa"
+                                           TextColor="Black"
+                                           FontAttributes="Bold" />
+                                </StackLayout>
+                                <StackLayout Grid.Column="2"
+                                             Orientation="Horizontal">
+                                    <Label Text="Hora"
+                                           TextColor="Black"
+                                           FontAttributes="Bold" />
+                                    <Label Text="HH:mm"
+                                           TextColor="Black"
+                                           FontAttributes="Bold" />
+                                </StackLayout>
+                            </Grid>
+                        </Grid>
+                    </Frame>
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding GoToTripDetailCommand}"/>
+                    </Frame.GestureRecognizers>
+                </Frame>
+            </Grid>
+        </Grid>
+    </Grid>
+</ContentView>

@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppTripCliente.View.Login.Register"
+             BackgroundColor="White"
+             NavigationPage.HasNavigationBar="False">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="0.7*" />
+        </Grid.RowDefinitions>
+        <Frame BackgroundColor="#455968">
+            <Image Source="LOGOTRIP"
+                   Margin="50,-250,50,0" />
+        </Frame>
+        <StackLayout Orientation="Horizontal">
+            <Image Source="LeftArrow"
+                   HorizontalOptions="Start"
+                   VerticalOptions="Start"
+                   WidthRequest="35"
+                   Margin="20">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding GoBackCommand}"/>
+                </Image.GestureRecognizers>
+            </Image>
+        </StackLayout>
+        <Frame Grid.Row="1"
+               BackgroundColor="white"
+               Margin="20,-280,20,70"
+               CornerRadius="25">
+            <StackLayout>
+                <Label Text="Registro"
+                       FontAttributes="Bold"
+                       TextColor="Black"
+                       FontSize="20"
+                       Margin="12,0,0,0" />
+                <Entry FontSize="15"
+                       Margin="10,10,35,10" 
+                       Placeholder="Nombre(s)"
+                       Visual="Material"
+                       BackgroundColor="White"
+                       PlaceholderColor="#B4B4B4"/>
+                <Entry FontSize="15"
+                       Margin="10,0,35,10" 
+                       Placeholder="Apellidos"
+                       Visual="Material"
+                       BackgroundColor="White"
+                       PlaceholderColor="#B4B4B4"/>
+                <Entry FontSize="15"
+                       Margin="10,0,35,10" 
+                       Placeholder="Correo electronico"
+                       Keyboard="Email"
+                       Visual="Material"
+                       BackgroundColor="White"
+                       PlaceholderColor="#B4B4B4"/>
+                <Entry FontSize="15"
+                       Margin="10,0,35,10" 
+                       Placeholder="Numero Celular"
+                       Keyboard="Telephone"
+                       Visual="Material"
+                       BackgroundColor="White"
+                       PlaceholderColor="#B4B4B4"/>
+                <Entry FontSize="15"
+                       Margin="10,0,35,10" 
+                       Placeholder="Contraseña"
+                       IsPassword="True"
+                       Visual="Material"
+                       BackgroundColor="White"
+                       PlaceholderColor="#B4B4B4"/>
+                <Entry FontSize="15"
+                       Margin="10,0,35,10" 
+                       Placeholder="Confirmar Contraseña"
+                       IsPassword="True"
+                       Visual="Material"
+                       BackgroundColor="White"
+                       PlaceholderColor="#B4B4B4"/>
+            </StackLayout>
+        </Frame>
+        <Button Grid.Row="1"
+                BackgroundColor="#455968"
+                CornerRadius="25"
+                Text="Registrarse"
+                TextColor="White"
+                FontSize="20"
+                TextTransform="None"
+                HorizontalOptions="CenterAndExpand"
+                VerticalOptions="EndAndExpand"
+                Padding="50,20,50,20" 
+                Margin="0,0,0,30"/>
+    </Grid>
+</ContentPage>

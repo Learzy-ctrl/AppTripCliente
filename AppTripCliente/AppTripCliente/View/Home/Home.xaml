@@ -1,0 +1,180 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppTripCliente.View.Home.Home"
+             NavigationPage.HasNavigationBar="False">
+    <Grid BackgroundColor="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.6*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0"
+              BackgroundColor="White">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.3*" />
+                <RowDefinition Height="0.6*" />
+                <RowDefinition Height="0.4*" />
+            </Grid.RowDefinitions>
+            <Frame BackgroundColor="#455968"
+                   Grid.Row="0"
+                   CornerRadius="10"
+                   HorizontalOptions="Start"
+                   Margin="20,10,0,0"
+                   Padding="10">
+                <Label Text="Inicio"
+                       TextColor="White"
+                       FontAttributes="Bold"
+                       FontSize="25"
+                       Margin="0,-15,0,-10"
+                       HorizontalOptions="CenterAndExpand"
+                       VerticalOptions="CenterAndExpand" />
+            </Frame>
+            <Image Source="LOGOTRIP"
+                   HorizontalOptions="End"
+                   Margin="0,-20,10,-35" />
+            <Frame BackgroundColor="#F0F0F0"
+                   Grid.Row="1"
+                   Margin="30,30,30,30"
+                   CornerRadius="35">
+                <StackLayout Orientation="Horizontal"
+                             Margin="0,-10,0,-10">
+                    <Label Text="Asigna un viaje ahora"
+                           TextColor="Black"
+                           FontAttributes="Bold"
+                           FontSize="20"
+                           HorizontalOptions="CenterAndExpand"
+                           VerticalOptions="CenterAndExpand" />
+                    <Image Source="timetable"
+                           HorizontalOptions="EndAndExpand" 
+                           Margin="0,0,20,0"/>
+                </StackLayout>
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding GoToQuoteTripCommand}"/>
+                </Frame.GestureRecognizers>
+            </Frame>
+            <Frame Grid.Row="2"
+                   BackgroundColor="Transparent"
+                   HasShadow="False">
+                <StackLayout Margin="-15">
+                    <Label Text="Cotizaciones"
+                           TextColor="Black"
+                           FontAttributes="Bold"
+                           FontSize="25"
+                           Margin="10,0,0,0" />
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Puedes ver alguna cotizacion al asignar un viaje"
+                               TextColor="Black"
+                               FontAttributes="Bold"
+                               FontSize="14"
+                               VerticalOptions="EndAndExpand"
+                               Margin="10,0,0,0" />
+                        <Label Text=""
+                               TextColor="#751BBB"
+                               FontAttributes="Bold"
+                               FontSize="14"
+                               VerticalOptions="EndAndExpand" />
+                    </StackLayout>
+                </StackLayout>
+            </Frame>
+            
+        </Grid>
+        <Frame Grid.Row="1"
+               BackgroundColor="#F0F0F0"
+               CornerRadius="20"
+               Margin="20">
+            <Frame BackgroundColor="White"
+                   CornerRadius="20"
+                   Margin="-10">
+                <Grid RowDefinitions="1*,1*,1*,1*,1*,1*,2*,1*,1.5*">
+                    <Label Text="Viaje a:"
+                           FontAttributes="Bold"
+                           TextColor="Black"
+                           Grid.Row="0"
+                           HorizontalOptions="StartAndExpand" />
+                    <Label Text="---------------"
+                           TextColor="Black"
+                           Grid.Row="0"
+                           HorizontalOptions="EndAndExpand" />
+                    <Label Text="Fecha:"
+                           FontAttributes="Bold"
+                           TextColor="Black"
+                           Grid.Row="1"
+                           HorizontalOptions="StartAndExpand" />
+                    <Label Text="---------------"
+                           TextColor="Black"
+                           Grid.Row="1"
+                           HorizontalOptions="EndAndExpand" />
+                    <Label Text="Hora:"
+                           FontAttributes="Bold"
+                           TextColor="Black"
+                           Grid.Row="2"
+                           HorizontalOptions="StartAndExpand" />
+                    <Label Text="---------------"
+                           TextColor="Black"
+                           Grid.Row="2"
+                           HorizontalOptions="EndAndExpand" />
+                    <Label Text="Punto de origen:"
+                           FontAttributes="Bold"
+                           TextColor="Black"
+                           Grid.Row="3"
+                           HorizontalOptions="StartAndExpand" />
+                    <Label Text="---------------"
+                           TextColor="Black"
+                           Grid.Row="3"
+                           HorizontalOptions="EndAndExpand" />
+                    <Label Text="Numero de pasajeros:"
+                           FontAttributes="Bold"
+                           TextColor="Black"
+                           Grid.Row="4"
+                           HorizontalOptions="StartAndExpand" />
+                    <Label Text="---------------"
+                           TextColor="Black"
+                           Grid.Row="4"
+                           HorizontalOptions="EndAndExpand" />
+                    <Label Text="Viaje Redondo:"
+                           FontAttributes="Bold"
+                           TextColor="Black"
+                           Grid.Row="5"
+                           HorizontalOptions="StartAndExpand" />
+                    <Label Text="---------------"
+                           TextColor="Black"
+                           Grid.Row="5"
+                           HorizontalOptions="EndAndExpand" />
+                    <Label Text="Vehiculo:"
+                           FontAttributes="Bold"
+                           TextColor="Black"
+                           Grid.Row="6"
+                           HorizontalOptions="StartAndExpand" />
+                    <Label Text="---------------"
+                           TextColor="Black"
+                           Grid.Row="6"
+                           HorizontalOptions="EndAndExpand" />
+                    <StackLayout Orientation="Horizontal"
+                                 Grid.Row="7">
+                        <Label Text="Precio total:"
+                               FontAttributes="Bold"
+                               TextColor="Black"
+                               HorizontalOptions="EndAndExpand" />
+                        <Label Text="------"
+                               TextColor="Black"
+                               HorizontalOptions="End" />
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal"
+                                 Grid.Row="8">
+                        <Button HorizontalOptions="EndAndExpand"
+                                Text="Rechazar"
+                                TextColor="White"
+                                CornerRadius="25"
+                                BackgroundColor="#C44B4B" />
+                        <Button HorizontalOptions="End"
+                                Text="Confirmar"
+                                TextColor="White"
+                                CornerRadius="25"
+                                BackgroundColor="#50964E" />
+                    </StackLayout>
+                    
+                </Grid>
+            </Frame>
+        </Frame>
+    </Grid>
+</ContentPage>

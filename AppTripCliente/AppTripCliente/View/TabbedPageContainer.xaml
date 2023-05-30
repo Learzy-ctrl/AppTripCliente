@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppTripCliente.View.TabbedPageContainer"
+            xmlns:Home="clr-namespace:AppTripCliente.View.Home"
+            xmlns:Services="clr-namespace:AppTripCliente.View.Services"
+            xmlns:History="clr-namespace:AppTripCliente.View.History"
+            xmlns:Account="clr-namespace:AppTripCliente.View.Account"
+            BarTextColor="White"
+            BarBackgroundColor="#455968"
+            SelectedTabColor="Black"
+            UnselectedTabColor="White"
+            NavigationPage.HasNavigationBar="False">
+    
+    <Home:Home Title="Inicio"
+                  IconImageSource="home" />
+    <Services:Services Title="Servicios"
+                  IconImageSource="extension" />
+    <History:History Title="Historial"
+                  IconImageSource="history" />
+    <Account:Account Title="Cuenta"
+                  IconImageSource="useric" />
+</TabbedPage>

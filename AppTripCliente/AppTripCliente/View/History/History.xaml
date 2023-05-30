@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppTripCliente.View.History.History"
+             xmlns:Local="clr-namespace:AppTripCliente.View.Account">
+    <Grid BackgroundColor="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.9*" />
+            <RowDefinition Height="10*" />
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*" />
+            </Grid.RowDefinitions>
+            <StackLayout Orientation="Horizontal"
+                         VerticalOptions="StartAndExpand">
+                <Frame Grid.Row="0"
+                       BackgroundColor="#455968"
+                       CornerRadius="10"
+                       HorizontalOptions="Start"
+                       Margin="20,10,0,0"
+                       Padding="10">
+                    <Label Text="Historial"
+                           TextColor="White"
+                           FontAttributes="Bold"
+                           FontSize="25"
+                           Margin="0,-15,0,-10"
+                           HorizontalOptions="CenterAndExpand"
+                           VerticalOptions="CenterAndExpand" />
+                </Frame>
+                <Image Source="LOGOTRIP"
+                       HorizontalOptions="EndAndExpand"
+                       Margin="0,-20,10,-35" />
+            </StackLayout>
+        </Grid>
+        <Grid Grid.Row="1">
+            <ContentView x:Name="jijiji" />
+        </Grid>
+    </Grid>
+</ContentPage>

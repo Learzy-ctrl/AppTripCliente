@@ -1,0 +1,293 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppTripCliente.View.Services.QuoteTrip"
+             BackgroundColor="White"
+             NavigationPage.HasNavigationBar="False">
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.2*" />
+            <RowDefinition Height="0.8*" />
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0"
+              >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.3*" />
+                <RowDefinition Height="0.7*" />
+            </Grid.RowDefinitions>
+            <StackLayout Orientation="Horizontal">
+                <Image Source="LeftArrowBlack"
+                       Margin="20,10,10,0"
+                       HorizontalOptions="Start">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding GoBackCommand}"/>
+                    </Image.GestureRecognizers>
+                </Image>
+                <Label Text="{Binding OptionQuote}"
+                       VerticalOptions="CenterAndExpand"
+                       HorizontalOptions="CenterAndExpand"
+                       FontAttributes="Bold"
+                       TextColor="Black"/>
+                <Image Source="LOGOTRIP"
+                       HorizontalOptions="End"
+                       Margin="0,-20,10,-40" />
+            </StackLayout>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.12*" />
+                    <ColumnDefinition Width="0.88*" />
+                </Grid.ColumnDefinitions>
+                <Image Grid.Column="0"
+                       Source="PointToPoint"
+                       Margin="23,10,0,0" />
+                <StackLayout Grid.Column="1">
+                    <Frame Margin="12,8,50,4"
+                           CornerRadius="20"
+                           BackgroundColor="#E6E6E6">
+                        <Entry Placeholder="¿Donde Empezamos?"
+                               Margin="0,-30,0,-27"
+                               FontSize="15"
+                               Visual="Material"
+                               PlaceholderColor="#7C7C7C"
+                               BackgroundColor="#E6E6E6" />
+                    </Frame>
+                    <Frame Margin="12,4,50,8"
+                           CornerRadius="20"
+                           BackgroundColor="#E6E6E6">
+                        <Entry Placeholder="¿A donde vamos?"
+                               Margin="0,-30,0,-27"
+                               FontSize="15"
+                               Visual="Material"
+                               PlaceholderColor="#7C7C7C"
+                               BackgroundColor="#E6E6E6" />
+                    </Frame>
+                </StackLayout>
+            </Grid>
+        </Grid>
+        <ScrollView Grid.Row="1"
+                    BackgroundColor="#455968">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Frame Grid.Row="0"
+                       Margin="15"
+                       CornerRadius="25">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Label Grid.Row="0"
+                               Text="Detalle del viaje"
+                               TextColor="Black"
+                               FontAttributes="Bold"
+                               VerticalOptions="StartAndExpand"
+                               FontSize="20"
+                               Margin="10" />
+                        <Grid Grid.Row="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width="1*" />
+                            </Grid.ColumnDefinitions>
+                            <Frame Grid.Column="0"
+                                   CornerRadius="20"
+                                   BackgroundColor="Transparent">
+                                <StackLayout Grid.Column="0">
+                                    <Label Text="Fecha Inicio"
+                                           TextColor="#B4B4B4"/>
+                                    <DatePicker FontSize="18" 
+                                                Date="{Binding StartDate}"
+                                                Margin = "-10,10,-10,0"
+                                                TextColor="black"/>
+                                </StackLayout>
+                            </Frame>
+                            <Frame Grid.Column="1"
+                                   CornerRadius="20"
+                                   BackgroundColor="Transparent">
+                                <StackLayout>
+                                    <Label Text="Fecha Fin"
+                                           TextColor="#B4B4B4"/>
+                                    <DatePicker FontSize="18" 
+                                                Date="{Binding EndDate}"
+                                                Margin="-10,10,-10,0" 
+                                                TextColor="Black"/>
+                                </StackLayout>
+                            </Frame>
+                        </Grid>
+                        <Grid Grid.Row="2"
+                              Margin="0,10,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width="1*" />
+                            </Grid.ColumnDefinitions>
+                            <Frame Grid.Column="0"
+                                   CornerRadius="20"
+                                   BackgroundColor="Transparent">
+                                <StackLayout>
+                                    <Label Text="Hora Inicio"
+                                           TextColor="#B4B4B4"/>
+                                    <TimePicker FontSize="18"
+                                                Margin="-10,10,-10,0" 
+                                                TextColor="Black"/>
+                                </StackLayout>
+                            </Frame>
+                            <Frame Grid.Column="1"
+                                   CornerRadius="20"
+                                   BackgroundColor="Transparent">
+                                <StackLayout>
+                                    <Label Text="Viaje Redondo:"
+                                           TextColor="#B4B4B4"/>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="1*" />
+                                            <ColumnDefinition Width="1*" />
+                                        </Grid.ColumnDefinitions>
+                                        <StackLayout Grid.Column="0">
+                                            <Label Text="Si:"
+                                                   Margin="0,0,0,10"
+                                                   TextColor="Black"/>
+                                            <Label Text="No:" 
+                                                   TextColor="Black"/>
+                                        </StackLayout>
+                                        <StackLayout Grid.Column="1"
+                                                     Margin="-30,0,0,0">
+                                            <CheckBox />
+                                            <CheckBox />
+                                        </StackLayout>
+                                    </Grid>
+                                </StackLayout>
+                            </Frame>
+                        </Grid>
+                        <Grid Grid.Row="3"
+                              Margin="0,10,0,10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="5*" />
+                                <ColumnDefinition Width="5*" />
+                            </Grid.ColumnDefinitions>
+                            <Frame BackgroundColor="Transparent"
+                                   CornerRadius="20">
+                                <Entry Visual="Material"
+                                       Placeholder="Pasajeros"
+                                       FontSize="15"
+                                       BackgroundColor="White"
+                                       Keyboard="Numeric"
+                                       Margin="-10,-30,-10,0"
+                                       PlaceholderColor="#B4B4B4"/>
+                            </Frame>
+                            <StackLayout Grid.Column="1"
+                                         Orientation="Horizontal"
+                                         HorizontalOptions="EndAndExpand"
+                                         VerticalOptions="EndAndExpand"
+                                         Margin="10">
+                                <Label Text="Dias Totales:"
+                                       FontSize="15"
+                                       TextColor="#B4B4B4"/>
+                                <Label Text="{Binding NumberOfDays}"
+                                       FontSize="15"
+                                       TextColor="#B4B4B4"/>
+                            </StackLayout>
+                        </Grid>
+                    </Grid>
+                </Frame>
+                <Frame Grid.Row="1"
+                       Margin="15"
+                       CornerRadius="25">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="50" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Label Grid.Row="0"
+                               Text="Datos del Usuario"
+                               TextColor="Black"
+                               FontAttributes="Bold"
+                               VerticalOptions="StartAndExpand"
+                               FontSize="20"
+                               Margin="10" />
+                        <Grid Grid.Row="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="6*"/>
+                                <ColumnDefinition Width="4*" />
+                            </Grid.ColumnDefinitions>
+                            <Button Grid.Column="0"
+                                    Text="Usar datos de la cuenta"
+                                    BackgroundColor="{Binding BackgroudColorBtn1}"
+                                    TextColor="{Binding TextColorBtn1}"
+                                    BorderWidth="1"
+                                    BorderColor="{Binding BorderColorBtn1}"
+                                    CornerRadius="20"
+                                    HorizontalOptions="CenterAndExpand"
+                                    VerticalOptions="CenterAndExpand"
+                                    FontSize="13"
+                                    Command="{Binding WithAccountCommand}"/>
+                            <Button Grid.Column="1"
+                                    Text="Usar otros datos"
+                                    BackgroundColor="{Binding BackgroudColorBtn2}"
+                                    TextColor="{Binding TextColorBtn2}"
+                                    CornerRadius="20"
+                                    HorizontalOptions="CenterAndExpand"
+                                    VerticalOptions="CenterAndExpand" 
+                                    BorderWidth="1"
+                                    BorderColor="{Binding BorderColorBtn2}"
+                                    FontSize="13"
+                                    Command="{Binding WithoutAccountCommand}"/>
+                        </Grid>
+                        <Grid Grid.Row="2"
+                              Margin="-15">
+                            <Frame VerticalOptions="CenterAndExpand"
+                                   Margin="15"
+                                   CornerRadius="25"
+                                   BackgroundColor="Transparent">
+                                <Entry Placeholder="Nombre"
+                                       BackgroundColor="white"
+                                       VerticalOptions="CenterAndExpand"
+                                       Visual="Material"/>
+                            </Frame>
+                        </Grid>
+                        <Grid Grid.Row="3"
+                              Margin="-15">
+                            <Frame VerticalOptions="CenterAndExpand"
+                                   Margin="15"
+                                   CornerRadius="25"
+                                   BackgroundColor="Transparent">
+                                <Entry Placeholder="Numero Celular"
+                                       BackgroundColor="white"
+                                       VerticalOptions="CenterAndExpand"
+                                       Visual="Material" />
+                            </Frame>
+                        </Grid>
+                        <Grid Grid.Row="4"
+                              Margin="-15">
+                            <Frame VerticalOptions="CenterAndExpand"
+                                   Margin="15"
+                                   CornerRadius="25"
+                                   BackgroundColor="Transparent">
+                                <Entry Placeholder="Comentarios (Opcional)"
+                                       BackgroundColor="white"
+                                       VerticalOptions="CenterAndExpand"
+                                       Visual="Material" />
+                            </Frame>
+                        </Grid>
+                        <Grid Grid.Row="5">
+                            <Button Text="Enviar"
+                                    TextColor="White"
+                                    HorizontalOptions="EndAndExpand"
+                                    VerticalOptions="CenterAndExpand"
+                                    CornerRadius="15"
+                                    BackgroundColor="#50964E"/>
+                        </Grid>
+                    </Grid>
+                </Frame>
+            </Grid>
+        </ScrollView>
+    </Grid>
+</ContentPage>

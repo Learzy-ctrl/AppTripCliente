@@ -1,0 +1,168 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppTripCliente.View.Services.Services">
+    <Grid BackgroundColor="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1.2*" />
+            <RowDefinition Height="5*" />
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0"
+              BackgroundColor="White">
+            <Grid.RowDefinitions>
+                <RowDefinition Height=".8*" />
+                <RowDefinition Height="1*" />
+            </Grid.RowDefinitions>
+            <StackLayout Orientation="Horizontal"
+                         VerticalOptions="StartAndExpand">
+                <Frame Grid.Row="0"
+                       BackgroundColor="#455968"
+                       CornerRadius="10"
+                       HorizontalOptions="Start"
+                       Margin="20,10,0,0"
+                       Padding="10">
+                    <Label Text="Servcios"
+                           TextColor="White"
+                           FontAttributes="Bold"
+                           FontSize="25"
+                           Margin="0,-15,0,-10"
+                           HorizontalOptions="CenterAndExpand"
+                           VerticalOptions="CenterAndExpand" />
+                </Frame>
+                <Image Source="LOGOTRIP"
+                       HorizontalOptions="EndAndExpand"
+                       Margin="0,-20,10,-35" />
+            </StackLayout>
+            
+            <Frame Grid.Row="1"
+                   BackgroundColor="Transparent"
+                   HasShadow="False"
+                   VerticalOptions="EndAndExpand">
+                <StackLayout>
+                    <Label Text="En TRIP nos preocupamos porque tu viaje sea una experiencia Única, Confiable y Segura"
+                           TextColor="Black"
+                           FontAttributes="Bold"
+                           FontSize="17"
+                           VerticalOptions="StartAndExpand"
+                           Margin="-5"/>
+                </StackLayout>
+            </Frame>
+        </Grid>
+        <Grid Grid.Row="1"
+              RowDefinitions="5*,6*">
+            <Grid Grid.Row="0"
+                  RowDefinitions="1*,1*"
+                  Margin="0,30,0,0">
+                <Grid Grid.Row="0"
+                      ColumnDefinitions="5*,5*">
+                    <Frame Grid.Column="0"
+                           BackgroundColor="#CACACA"
+                           HorizontalOptions="CenterAndExpand"
+                           CornerRadius="20"
+                           Margin="5">
+                        <StackLayout Orientation="Horizontal">
+                            <Image Source="TE"
+                                   HorizontalOptions="CenterAndExpand"
+                                   HeightRequest="45" />
+                            <StackLayout Margin="-10">
+                                <Label Text="Transporte"
+                                       FontSize="17"
+                                       FontAttributes="Bold"
+                                       TextColor="Black"
+                                       VerticalOptions="EndAndExpand" />
+                                <Label Text="Ejecutivo"
+                                       FontSize="17"
+                                       FontAttributes="Bold"
+                                       TextColor="Black"
+                                       VerticalOptions="StartAndExpand" />
+                            </StackLayout>
+                        </StackLayout>
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding GoToQuoteTrip1Command}"/>
+                        </Frame.GestureRecognizers>
+                    </Frame>
+                    <Frame Grid.Column="1"
+                           BackgroundColor="#CACACA"
+                           HorizontalOptions="CenterAndExpand"
+                           CornerRadius="20"
+                           Margin="5">
+                        <StackLayout Orientation="Horizontal">
+                            <Image Source="xd"
+                                   HorizontalOptions="CenterAndExpand"
+                                   HeightRequest="45" />
+                            <StackLayout Margin="-4">
+                                <Label Text="Transporte de"
+                                       FontSize="17"
+                                       FontAttributes="Bold"
+                                       TextColor="Black"
+                                       VerticalOptions="EndAndExpand" />
+                                <Label Text="personal"
+                                       FontSize="17"
+                                       FontAttributes="Bold"
+                                       TextColor="Black"
+                                       VerticalOptions="StartAndExpand" />
+                            </StackLayout>
+                        </StackLayout>
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding GoToQuoteTrip2Command}" />
+                        </Frame.GestureRecognizers>
+                    </Frame>
+                </Grid>
+                <Frame Grid.Row="1"
+                       BackgroundColor="#CACACA"
+                       HorizontalOptions="CenterAndExpand"
+                       VerticalOptions="CenterAndExpand"
+                       CornerRadius="20"
+                       Margin="0">
+                    <StackLayout Orientation="Horizontal">
+                        <Image Source="OIP"
+                               HorizontalOptions="CenterAndExpand"
+                               HeightRequest="45"/>
+                        <StackLayout>
+                            <Label Text="Servicios"
+                                   FontSize="17"
+                                   FontAttributes="Bold"
+                                   TextColor="Black"
+                                   VerticalOptions="CenterAndExpand"/>
+                            <Label Text="Especiales"
+                                   FontSize="17"
+                                   FontAttributes="Bold"
+                                   TextColor="Black"
+                                   VerticalOptions="CenterAndExpand" />
+                        </StackLayout>
+                        
+                    </StackLayout>
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding GoToQuoteTrip3Command}" />
+                    </Frame.GestureRecognizers>
+                </Frame>
+            </Grid>
+            <Grid Grid.Row="1">
+                <Frame BorderColor="#455968"
+                       CornerRadius="20"
+                       HorizontalOptions="EndAndExpand"
+                       VerticalOptions="EndAndExpand"
+                       Margin="15">
+                    <StackLayout Orientation="Horizontal">
+                        <Image Source="mailbox"
+                               HeightRequest="30"/>
+                        <StackLayout>
+                            <Label Text="Buzon de"
+                                   FontAttributes="Bold"
+                                   FontSize="12"
+                                   TextColor="#B4B4B4"/>
+                            <Label Text="Sugerencias"
+                                   FontAttributes="Bold"
+                                   FontSize="12"
+                                   TextColor="#B4B4B4"/>
+                        </StackLayout>
+                        
+                    </StackLayout>
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding GoToMailBoxCommand}"/>
+                    </Frame.GestureRecognizers>
+                </Frame>
+            </Grid>
+        </Grid>
+    </Grid>
+</ContentPage>

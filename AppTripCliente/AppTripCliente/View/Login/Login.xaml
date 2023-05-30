@@ -58,17 +58,16 @@
                      VerticalOptions="End"
                      Margin="0,0,0,20">
             <Label Text="¿No tienes cuenta?"
-                   HorizontalOptions="CenterAndExpand" 
+                   HorizontalOptions="CenterAndExpand"
                    Margin="40,0,-30,0"
-                   TextColor="Black"/>
+                   TextColor="Black" />
             <Label Text="Registrate aqui"
                    HorizontalOptions="StartAndExpand"
                    TextColor="#751BBB">
                 <Label.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding GoToRegisterCommand}"/>
+                    <TapGestureRecognizer Command="{Binding GoToRegisterCommand}" />
                 </Label.GestureRecognizers>
             </Label>
         </StackLayout >
-        <Frame />
     </Grid> 
 </ContentPage>

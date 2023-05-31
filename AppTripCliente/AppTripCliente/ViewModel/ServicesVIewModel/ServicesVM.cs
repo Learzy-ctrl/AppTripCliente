@@ -42,7 +42,6 @@ namespace AppTripCliente.ViewModel.ServicesVIewModel
         public ICommand GoToQuoteTrip1Command => new Command(() => GoToQuoteTrip("Transporte Ejecutivo"));
         public ICommand GoToQuoteTrip2Command => new Command(() => GoToQuoteTrip("Transporte de personal"));
         public ICommand GoToQuoteTrip3Command => new Command(() => GoToQuoteTrip("Servicios Especiales"));
-
         #endregion
     }
 }

@@ -13,9 +13,9 @@ namespace AppTripCliente
         public App()
         {
             InitializeComponent();
-            //MainPage = new NavigationPage(new Login());
+            MainPage = new NavigationPage(new Login());
              //MainPage = new TabbedPageContainer();
-            MainPage = new MailBox();
+            //MainPage = new MailBox();
             //MainPage = new QuoteTrip("");
            // MainPage = new TripDetail();
         }

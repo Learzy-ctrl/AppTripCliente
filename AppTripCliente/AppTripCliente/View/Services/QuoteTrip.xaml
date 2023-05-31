@@ -283,7 +283,8 @@
                                     HorizontalOptions="EndAndExpand"
                                     VerticalOptions="CenterAndExpand"
                                     CornerRadius="15"
-                                    BackgroundColor="#50964E"/>
+                                    BackgroundColor="#50964E"
+                                    Command="{Binding LoadingCommand}"/>
                         </Grid>
                     </Grid>
                 </Frame>

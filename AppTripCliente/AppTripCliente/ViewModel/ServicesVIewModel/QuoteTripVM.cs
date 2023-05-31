@@ -3,6 +3,7 @@ using AppTripCliente.View.Login;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -149,6 +150,11 @@ namespace AppTripCliente.ViewModel.ServicesVIewModel
             BackgroudColorBtn2 = "#455968";
             BorderColorBtn2 = "#455968";
             TextColorBtn2 = "white";
+        }
+
+        public async Task loading()
+        {
+            await DisplayAlert("JIJIJIJA", "jiji", "ok");
         }
         #endregion
 

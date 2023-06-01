@@ -1,4 +1,5 @@
-﻿using AppTripCliente.View.Home;
+﻿using Acr.UserDialogs;
+using AppTripCliente.View.Home;
 using AppTripCliente.View.Login;
 using AppTripCliente.View.Services;
 using System;
@@ -30,12 +31,16 @@ namespace AppTripCliente.ViewModel.HomeViewModel
 
         public async Task GoToQuoteTrip()
         {
+            UserDialogs.Instance.ShowLoading("Cargando");
             await Navigation.PushModalAsync(new QuoteTrip(""));
+            UserDialogs.Instance.HideLoading();
         }
 
         public async Task GoToPendingTrips()
         {
+            UserDialogs.Instance.ShowLoading("Cargando");
             await Navigation.PushModalAsync(new PendingTrips());
+            UserDialogs.Instance.HideLoading();
         }
         #endregion
 

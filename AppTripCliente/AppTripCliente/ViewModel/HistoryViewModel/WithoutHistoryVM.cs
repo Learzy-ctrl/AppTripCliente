@@ -1,4 +1,5 @@
-﻿using AppTripCliente.View.Services;
+﻿using Acr.UserDialogs;
+using AppTripCliente.View.Services;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -26,7 +27,9 @@ namespace AppTripCliente.ViewModel.HistoryViewModel
 
         public void GoToQuoteTrip()
         {
+            UserDialogs.Instance.ShowLoading("Cargando");
             Navigation.PushModalAsync(new QuoteTrip(""));
+            UserDialogs.Instance.HideLoading();
         }
 
         #endregion

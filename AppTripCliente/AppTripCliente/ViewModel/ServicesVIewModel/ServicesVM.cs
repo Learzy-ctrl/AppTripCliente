@@ -1,4 +1,5 @@
-﻿using AppTripCliente.View.Services;
+﻿using Acr.UserDialogs;
+using AppTripCliente.View.Services;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -28,12 +29,16 @@ namespace AppTripCliente.ViewModel.ServicesVIewModel
 
         public void GoToMailBox()
         {
-           Navigation.PushModalAsync(new MailBox());
+            UserDialogs.Instance.ShowLoading("Cargando");
+            Navigation.PushModalAsync(new MailBox());
+            UserDialogs.Instance.HideLoading();
         }
 
         public void GoToQuoteTrip(string option)
         {
+            UserDialogs.Instance.ShowLoading("Cargando");
             Navigation.PushModalAsync(new QuoteTrip(option));
+            UserDialogs.Instance.HideLoading();
         }
         #endregion
 

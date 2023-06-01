@@ -1,4 +1,5 @@
-﻿using AppTripCliente.View.History;
+﻿using Acr.UserDialogs;
+using AppTripCliente.View.History;
 using AppTripCliente.View.Services;
 using System;
 using System.Collections.Generic;
@@ -27,7 +28,9 @@ namespace AppTripCliente.ViewModel.HistoryViewModel
 
         public void GoToTripDetail()
         {
+            UserDialogs.Instance.ShowLoading("Cargando");
             Navigation.PushModalAsync(new TripDetail());
+            UserDialogs.Instance.HideLoading();
         }
 
         #endregion

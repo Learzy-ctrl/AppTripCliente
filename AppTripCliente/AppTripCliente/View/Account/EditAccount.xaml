@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppTripCliente.View.Account.EditAccount">
+    <Grid RowDefinitions="1*,11*"
+          BackgroundColor="White">
+        <Grid Grid.Row="0">
+            <Image Source="LeftArrowBlack"
+                   HorizontalOptions="Start"
+                   Margin="15">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding GoBackCommand}"/>
+                </Image.GestureRecognizers>
+            </Image>
+            <Frame BackgroundColor="#455968"
+                   HorizontalOptions="CenterAndExpand"
+                   VerticalOptions="CenterAndExpand"
+                   Margin="0"
+                   CornerRadius="20"
+                   Padding="10">
+                <Label Text="Editar"
+                       TextColor="White"
+                       FontAttributes="Bold"
+                       FontSize="20"
+                       VerticalOptions="CenterAndExpand"
+                       HorizontalOptions="CenterAndExpand"/>
+            </Frame>
+            <Image Source="LOGOTRIP"
+                   HorizontalOptions="EndAndExpand"
+                   Margin="0,0,10,0"/>
+        </Grid>
+        <Grid Grid.Row="1"
+              RowDefinitions="2*,2*,2*,2*,2*">
+            <Frame Grid.Row="0"
+                   VerticalOptions="EndAndExpand"
+                   CornerRadius="20"
+                   BackgroundColor="Transparent">
+                <Entry Placeholder="Nombre"
+                       Visual="Material"
+                       BackgroundColor="White"/>
+            </Frame>
+            <Frame Grid.Row="1"
+                   VerticalOptions="CenterAndExpand"
+                   CornerRadius="20"
+                   BackgroundColor="Transparent">
+                <Entry Placeholder="Apelidos" 
+                       Visual="Material"
+                       BackgroundColor="white"/>
+            </Frame>
+            <Frame Grid.Row="2"
+                   VerticalOptions="CenterAndExpand"
+                   CornerRadius="20"
+                   BackgroundColor="Transparent">
+                <Entry Placeholder="Correo Electronico" 
+                       Visual="Material"
+                       BackgroundColor="white"/>
+            </Frame>
+            <Frame Grid.Row="3"
+                   VerticalOptions="StartAndExpand"
+                   CornerRadius="20"
+                   BackgroundColor="Transparent">
+                <Entry Placeholder="Numero celular" 
+                       Visual="Material"
+                       BackgroundColor="white"/>
+            </Frame>
+            <Button Grid.Row="4"
+                    Text="Guardar"
+                    FontAttributes="Bold"
+                    TextColor="White"
+                    BackgroundColor="#455968"
+                    CornerRadius="25"
+                    HorizontalOptions="EndAndExpand"
+                    VerticalOptions="StartAndExpand"
+                    Margin="20"/>
+        </Grid>
+    </Grid>
+</ContentPage>

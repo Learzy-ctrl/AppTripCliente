@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AppTripCliente.ViewModel.AccountViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,8 +16,7 @@ namespace AppTripCliente.View.Account
 		public Account ()
 		{
 			InitializeComponent ();
-
-			
+			BindingContext = new AccountVM(Navigation);
 		}
 
 	}

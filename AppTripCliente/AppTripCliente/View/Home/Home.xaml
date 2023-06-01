@@ -62,17 +62,21 @@
                            FontSize="25"
                            Margin="10,0,0,0" />
                     <StackLayout Orientation="Horizontal">
-                        <Label Text="Puedes ver alguna cotizacion al asignar un viaje"
+                        <Label Text="Oprime aqui para mostrar tus"
                                TextColor="Black"
                                FontAttributes="Bold"
                                FontSize="14"
                                VerticalOptions="EndAndExpand"
                                Margin="10,0,0,0" />
-                        <Label Text=""
+                        <Label Text="Viajes Pendientes"
                                TextColor="#751BBB"
                                FontAttributes="Bold"
                                FontSize="14"
-                               VerticalOptions="EndAndExpand" />
+                               VerticalOptions="EndAndExpand">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding GoToPendingTripsCommand}"/>
+                            </Label.GestureRecognizers>
+                        </Label>
                     </StackLayout>
                 </StackLayout>
             </Frame>

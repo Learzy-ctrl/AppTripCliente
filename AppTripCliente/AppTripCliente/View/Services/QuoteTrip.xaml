@@ -156,8 +156,8 @@
                                         </StackLayout>
                                         <StackLayout Grid.Column="1"
                                                      Margin="-30,0,0,0">
-                                            <CheckBox />
-                                            <CheckBox />
+                                            <CheckBox IsChecked="{Binding CheckYes}"/>
+                                            <CheckBox IsChecked="{Binding CheckNo}"/>
                                         </StackLayout>
                                     </Grid>
                                 </StackLayout>

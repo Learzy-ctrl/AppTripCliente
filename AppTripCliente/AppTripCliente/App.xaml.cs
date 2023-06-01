@@ -1,5 +1,7 @@
 ﻿using AppTripCliente.View;
+using AppTripCliente.View.Account;
 using AppTripCliente.View.History;
+using AppTripCliente.View.Home;
 using AppTripCliente.View.Login;
 using AppTripCliente.View.Services;
 using System;
@@ -13,11 +15,13 @@ namespace AppTripCliente
         public App()
         {
             InitializeComponent();
-            MainPage = new NavigationPage(new Login());
-             //MainPage = new TabbedPageContainer();
+            //MainPage = new NavigationPage(new Login());
+            MainPage = new TabbedPageContainer();
             //MainPage = new MailBox();
             //MainPage = new QuoteTrip("");
-           // MainPage = new TripDetail();
+            // MainPage = new TripDetail();
+            //MainPage = new EditAccount();
+            //MainPage = new PendingTrips();
         }
 
         protected override void OnStart()

@@ -1,0 +1,215 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppTripCliente.View.Home.PendingTrips">
+    <Grid BackgroundColor="#455968">
+        <Frame Margin="10"
+               CornerRadius="20">
+            <Grid RowDefinitions="1*,10*">
+                <Image Source="LeftArrowBlack"
+                       HorizontalOptions="StartAndExpand"
+                       Margin="10">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding GoBackCommand}"/>
+                    </Image.GestureRecognizers>
+                </Image>
+                <Label Text="Viajes Pendientes"
+                       TextColor="Black"
+                       FontAttributes="Bold"
+                       FontSize="20"
+                       VerticalOptions="CenterAndExpand"
+                       HorizontalOptions="CenterAndExpand"/>
+                <ScrollView Grid.Row="1">
+                    <Grid>
+                        <Frame Grid.Row="0"
+                               BackgroundColor="#F0F0F0"
+                               CornerRadius="20"
+                               Margin="20">
+                            <Frame BackgroundColor="White"
+                                   CornerRadius="20"
+                                   Margin="-10">
+                                <Grid RowDefinitions="1*,1*,1*,1*,1*,1*,2*,1*,1.5*">
+                                    <Label Text="Viaje a:"
+                                           FontAttributes="Bold"
+                                           TextColor="Black"
+                                           Grid.Row="0"
+                                           HorizontalOptions="StartAndExpand" />
+                                    <Label Text="---------------"
+                                           TextColor="Black"
+                                           Grid.Row="0"
+                                           HorizontalOptions="EndAndExpand" />
+                                    <Label Text="Fecha:"
+                                           FontAttributes="Bold"
+                                           TextColor="Black"
+                                           Grid.Row="1"
+                                           HorizontalOptions="StartAndExpand" />
+                                    <Label Text="---------------"
+                                           TextColor="Black"
+                                           Grid.Row="1"
+                                           HorizontalOptions="EndAndExpand" />
+                                    <Label Text="Hora:"
+                                           FontAttributes="Bold"
+                                           TextColor="Black"
+                                           Grid.Row="2"
+                                           HorizontalOptions="StartAndExpand" />
+                                    <Label Text="---------------"
+                                           TextColor="Black"
+                                           Grid.Row="2"
+                                           HorizontalOptions="EndAndExpand" />
+                                    <Label Text="Punto de origen:"
+                                           FontAttributes="Bold"
+                                           TextColor="Black"
+                                           Grid.Row="3"
+                                           HorizontalOptions="StartAndExpand" />
+                                    <Label Text="---------------"
+                                           TextColor="Black"
+                                           Grid.Row="3"
+                                           HorizontalOptions="EndAndExpand" />
+                                    <Label Text="Numero de pasajeros:"
+                                           FontAttributes="Bold"
+                                           TextColor="Black"
+                                           Grid.Row="4"
+                                           HorizontalOptions="StartAndExpand" />
+                                    <Label Text="---------------"
+                                           TextColor="Black"
+                                           Grid.Row="4"
+                                           HorizontalOptions="EndAndExpand" />
+                                    <Label Text="Viaje Redondo:"
+                                           FontAttributes="Bold"
+                                           TextColor="Black"
+                                           Grid.Row="5"
+                                           HorizontalOptions="StartAndExpand" />
+                                    <Label Text="---------------"
+                                           TextColor="Black"
+                                           Grid.Row="5"
+                                           HorizontalOptions="EndAndExpand" />
+                                    <Label Text="Vehiculo:"
+                                           FontAttributes="Bold"
+                                           TextColor="Black"
+                                           Grid.Row="6"
+                                           HorizontalOptions="StartAndExpand" />
+                                    <Label Text="---------------"
+                                           TextColor="Black"
+                                           Grid.Row="6"
+                                           HorizontalOptions="EndAndExpand" />
+                                    <StackLayout Orientation="Horizontal"
+                                                 Grid.Row="7">
+                                        <Label Text="Precio total:"
+                                               FontAttributes="Bold"
+                                               TextColor="Black"
+                                               HorizontalOptions="EndAndExpand" />
+                                        <Label Text="Pendiete"
+                                               TextColor="Black"
+                                               HorizontalOptions="End" />
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal"
+                                                 Grid.Row="8">
+                                        <Button HorizontalOptions="EndAndExpand"
+                                                Text="Cancelar"
+                                                TextColor="White"
+                                                CornerRadius="25"
+                                                BackgroundColor="#C44B4B" />
+                                        
+                                    </StackLayout>
+                                </Grid>
+                            </Frame>
+                        </Frame>
+                        <Frame Grid.Row="1"
+                               BackgroundColor="#F0F0F0"
+                               CornerRadius="20"
+                               Margin="20">
+                            <Frame BackgroundColor="White"
+                                   CornerRadius="20"
+                                   Margin="-10">
+                                <Grid RowDefinitions="1*,1*,1*,1*,1*,1*,2*,1*,1.5*">
+                                    <Label Text="Viaje a:"
+                                           FontAttributes="Bold"
+                                           TextColor="Black"
+                                           Grid.Row="0"
+                                           HorizontalOptions="StartAndExpand" />
+                                    <Label Text="---------------"
+                                           TextColor="Black"
+                                           Grid.Row="0"
+                                           HorizontalOptions="EndAndExpand" />
+                                    <Label Text="Fecha:"
+                                           FontAttributes="Bold"
+                                           TextColor="Black"
+                                           Grid.Row="1"
+                                           HorizontalOptions="StartAndExpand" />
+                                    <Label Text="---------------"
+                                           TextColor="Black"
+                                           Grid.Row="1"
+                                           HorizontalOptions="EndAndExpand" />
+                                    <Label Text="Hora:"
+                                           FontAttributes="Bold"
+                                           TextColor="Black"
+                                           Grid.Row="2"
+                                           HorizontalOptions="StartAndExpand" />
+                                    <Label Text="---------------"
+                                           TextColor="Black"
+                                           Grid.Row="2"
+                                           HorizontalOptions="EndAndExpand" />
+                                    <Label Text="Punto de origen:"
+                                           FontAttributes="Bold"
+                                           TextColor="Black"
+                                           Grid.Row="3"
+                                           HorizontalOptions="StartAndExpand" />
+                                    <Label Text="---------------"
+                                           TextColor="Black"
+                                           Grid.Row="3"
+                                           HorizontalOptions="EndAndExpand" />
+                                    <Label Text="Numero de pasajeros:"
+                                           FontAttributes="Bold"
+                                           TextColor="Black"
+                                           Grid.Row="4"
+                                           HorizontalOptions="StartAndExpand" />
+                                    <Label Text="---------------"
+                                           TextColor="Black"
+                                           Grid.Row="4"
+                                           HorizontalOptions="EndAndExpand" />
+                                    <Label Text="Viaje Redondo:"
+                                           FontAttributes="Bold"
+                                           TextColor="Black"
+                                           Grid.Row="5"
+                                           HorizontalOptions="StartAndExpand" />
+                                    <Label Text="---------------"
+                                           TextColor="Black"
+                                           Grid.Row="5"
+                                           HorizontalOptions="EndAndExpand" />
+                                    <Label Text="Vehiculo:"
+                                           FontAttributes="Bold"
+                                           TextColor="Black"
+                                           Grid.Row="6"
+                                           HorizontalOptions="StartAndExpand" />
+                                    <Label Text="---------------"
+                                           TextColor="Black"
+                                           Grid.Row="6"
+                                           HorizontalOptions="EndAndExpand" />
+                                    <StackLayout Orientation="Horizontal"
+                                                 Grid.Row="7">
+                                        <Label Text="Precio total:"
+                                               FontAttributes="Bold"
+                                               TextColor="Black"
+                                               HorizontalOptions="EndAndExpand" />
+                                        <Label Text="Pendiete"
+                                               TextColor="Black"
+                                               HorizontalOptions="End" />
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal"
+                                                 Grid.Row="8">
+                                        <Button HorizontalOptions="EndAndExpand"
+                                                Text="Cancelar"
+                                                TextColor="White"
+                                                CornerRadius="25"
+                                                BackgroundColor="#C44B4B" />
+                                    </StackLayout>
+                                </Grid>
+                            </Frame>
+                        </Frame>
+                    </Grid>
+                </ScrollView>
+                
+            </Grid>
+        </Frame>
+    </Grid>
+</ContentPage>

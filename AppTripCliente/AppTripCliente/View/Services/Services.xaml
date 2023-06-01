@@ -150,11 +150,11 @@
                             <Label Text="Buzon de"
                                    FontAttributes="Bold"
                                    FontSize="12"
-                                   TextColor="#B4B4B4"/>
+                                   TextColor="Black"/>
                             <Label Text="Sugerencias"
                                    FontAttributes="Bold"
                                    FontSize="12"
-                                   TextColor="#B4B4B4"/>
+                                   TextColor="Black"/>
                         </StackLayout>
                         
                     </StackLayout>

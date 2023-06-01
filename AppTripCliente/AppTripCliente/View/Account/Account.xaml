@@ -89,6 +89,9 @@
                         <Image Source="next"
                                HorizontalOptions="EndAndExpand" />
                     </StackLayout>
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding GoToEditAccountCommand}"/>
+                    </Frame.GestureRecognizers>
                 </Frame>
                 <Frame Grid.Row="1">
                     <StackLayout Orientation="Horizontal">

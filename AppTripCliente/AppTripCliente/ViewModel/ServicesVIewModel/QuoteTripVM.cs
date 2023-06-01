@@ -1,4 +1,5 @@
-﻿using AppTripCliente.View.Home;
+﻿using Acr.UserDialogs;
+using AppTripCliente.View.Home;
 using AppTripCliente.View.Login;
 using System;
 using System.Collections.Generic;
@@ -26,6 +27,7 @@ namespace AppTripCliente.ViewModel.ServicesVIewModel
         string _textcolorbtn1 = "black";
         string _textcolorbtn2 = "white";
         string _OptionQuote;
+
         #endregion
 
         #region Constructor
@@ -37,6 +39,7 @@ namespace AppTripCliente.ViewModel.ServicesVIewModel
         #endregion
 
         #region Objetcs
+
         public string OptionQuote
         {
             get { return _OptionQuote; }
@@ -57,25 +60,21 @@ namespace AppTripCliente.ViewModel.ServicesVIewModel
             get { return _backgroudcolorbtn1; }
             set { SetValue(ref _backgroudcolorbtn1, value); }
         }
-
         public string BorderColorBtn1
         {
             get { return _bordercolorbtn1; }
             set { SetValue(ref _bordercolorbtn1, value); }
         }
-
         public string BackgroudColorBtn2
         {
             get { return _backgroudcolorbtn2; }
             set { SetValue(ref _backgroudcolorbtn2, value); }
         }
-
         public string BorderColorBtn2
         {
             get { return _bordercolorbtn2; }
             set { SetValue(ref _bordercolorbtn2, value); }
         }
-
         public string StartDate
         {
             get { return _startDate; }
@@ -83,7 +82,6 @@ namespace AppTripCliente.ViewModel.ServicesVIewModel
                 CalculateDays(_startDate, _endDate);
             }
         }
-
         public string EndDate
         {
             get { return _endDate; }
@@ -91,7 +89,6 @@ namespace AppTripCliente.ViewModel.ServicesVIewModel
                 CalculateDays(_startDate, _endDate);
             }
         }
-
         public string NumberOfDays
         {
             get { return _numberOfDays; }
@@ -152,9 +149,13 @@ namespace AppTripCliente.ViewModel.ServicesVIewModel
             TextColorBtn2 = "white";
         }
 
+
         public async Task loading()
         {
-            await DisplayAlert("JIJIJIJA", "jiji", "ok");
+            UserDialogs.Instance.ShowLoading("Cargando");
+            await Task.Delay(5000);
+            UserDialogs.Instance.HideLoading();
+            await DisplayAlert("Tarea finalizada", "Se ha enviado tus datos Correctamente", "ok");
         }
         #endregion
 
@@ -162,6 +163,8 @@ namespace AppTripCliente.ViewModel.ServicesVIewModel
         public ICommand GoBackCommand => new Command(async () => await GoBack());
         public ICommand WithAccountCommand => new Command(WithAccount);
         public ICommand WithoutAccountCommand => new Command(WithoutAccount);
+
+        public ICommand LoadingCommand => new Command(async () => await loading());
         #endregion
     }
 }

@@ -13,11 +13,12 @@ namespace AppTripCliente.View.Account
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class Account : ContentPage
 	{
-		public Account ()
+        public Account ()
 		{
 			InitializeComponent ();
-			BindingContext = new AccountVM(Navigation);
+			BindingContext = new AccountVM(Navigation, "sadasd");
 		}
 
-	}
+
+    }
 }

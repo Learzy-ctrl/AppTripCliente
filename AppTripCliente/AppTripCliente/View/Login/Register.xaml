@@ -35,18 +35,21 @@
                        FontSize="20"
                        Margin="12,0,0,0" />
                 <Entry FontSize="15"
+                       Text="{Binding Name}"
                        Margin="10,10,35,10" 
                        Placeholder="Nombre(s)"
                        Visual="Material"
                        BackgroundColor="White"
                        PlaceholderColor="#B4B4B4"/>
                 <Entry FontSize="15"
+                       Text="{Binding LastName}"
                        Margin="10,0,35,10" 
                        Placeholder="Apellidos"
                        Visual="Material"
                        BackgroundColor="White"
                        PlaceholderColor="#B4B4B4"/>
                 <Entry FontSize="15"
+                       Text="{Binding Email}"
                        Margin="10,0,35,10" 
                        Placeholder="Correo electronico"
                        Keyboard="Email"
@@ -54,6 +57,7 @@
                        BackgroundColor="White"
                        PlaceholderColor="#B4B4B4"/>
                 <Entry FontSize="15"
+                       Text="{Binding PhoneNumber}"
                        Margin="10,0,35,10" 
                        Placeholder="Numero Celular"
                        Keyboard="Telephone"
@@ -61,6 +65,7 @@
                        BackgroundColor="White"
                        PlaceholderColor="#B4B4B4"/>
                 <Entry FontSize="15"
+                       Text="{Binding Password}"
                        Margin="10,0,35,10" 
                        Placeholder="Contraseña"
                        IsPassword="True"
@@ -68,6 +73,7 @@
                        BackgroundColor="White"
                        PlaceholderColor="#B4B4B4"/>
                 <Entry FontSize="15"
+                       Text="{Binding ConfirmPassword}"
                        Margin="10,0,35,10" 
                        Placeholder="Confirmar Contraseña"
                        IsPassword="True"
@@ -86,6 +92,7 @@
                 HorizontalOptions="CenterAndExpand"
                 VerticalOptions="EndAndExpand"
                 Padding="50,20,50,20" 
-                Margin="0,0,0,30"/>
+                Margin="0,0,0,30"
+                Command="{Binding RegisterCommand}"/>
     </Grid>
 </ContentPage>

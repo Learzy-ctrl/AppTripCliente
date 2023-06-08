@@ -38,7 +38,7 @@
                 <Grid ColumnDefinitions="4*,6*">
                     <Image Source="user" />
                     <Label Grid.Column="1"
-                           Text="David Israel Curiel Duran"
+                           Text="{Binding Name}"
                            FontAttributes="Bold"
                            FontSize="35"
                            TextColor="Black"
@@ -65,7 +65,7 @@
                        Grid.Column="0" 
                        VerticalOptions="StartAndExpand"
                        Margin="18,0,0,0"/>
-                <Label Text="test@test.com"
+                <Label 
                        TextColor="Black"
                        FontSize="15"
                        Grid.Row="0"
@@ -111,7 +111,11 @@
                    FontSize="20"
                    HorizontalOptions="EndAndExpand"
                    VerticalOptions="EndAndExpand"
-                   Margin="30"/>
+                   Margin="30">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding CloseSessionCommand}"/>
+                </Label.GestureRecognizers>
+            </Label>
         </Grid>
     </Grid>
 </ContentPage>

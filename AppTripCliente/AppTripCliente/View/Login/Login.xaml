@@ -30,13 +30,15 @@
                        Visual="Material"
                        BackgroundColor="White"
                        PlaceholderColor="#B4B4B4"
-                       Keyboard="Email"/>
+                       Keyboard="Email"
+                       Text="{Binding Email}"/>
                 <Entry Placeholder="Contraseña"
                        IsPassword="True"
                        Margin="20" 
                        Visual="Material"
                        BackgroundColor="White"
-                       PlaceholderColor="#B4B4B4"/>
+                       PlaceholderColor="#B4B4B4"
+                       Text="{Binding Password}"/>
                 
             </StackLayout>
                    

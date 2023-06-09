@@ -1,4 +1,6 @@
 ﻿using Acr.UserDialogs;
+using AppTripCliente.Data.Account;
+using AppTripCliente.Model;
 using AppTripCliente.View.Home;
 using AppTripCliente.View.Login;
 using System;
@@ -8,15 +10,28 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace AppTripCliente.ViewModel.ServicesVIewModel
 {
     public class QuoteTripVM : BaseViewModel
     {
-        
+        private AccountData user = null;
+        private User DataUser = null;
+        #region Constructor
+        public QuoteTripVM(INavigation navigation, string Option)
+        {
+            Navigation = navigation;
+            OptionQuote = Option;
+            user = new AccountData();
+            DataUser = new User();
+            GetDataUser();
+        }
+        #endregion
 
         #region Variables
+        string _enable;
         string _startDate;
         string _endDate;
         string _numberOfDays;
@@ -27,19 +42,14 @@ namespace AppTripCliente.ViewModel.ServicesVIewModel
         string _textcolorbtn1 = "black";
         string _textcolorbtn2 = "white";
         string _OptionQuote;
+        string _name;
+        string _phonenumber;
 
         #endregion
 
-        #region Constructor
-        public QuoteTripVM(INavigation navigation, string Option)
-        {
-            Navigation = navigation;
-            OptionQuote = Option;
-        }
-        #endregion
+       
 
         #region Objetcs
-
         public string OptionQuote
         {
             get { return _OptionQuote; }
@@ -94,6 +104,21 @@ namespace AppTripCliente.ViewModel.ServicesVIewModel
             get { return _numberOfDays; }
             set { SetValue(ref _numberOfDays,value); }
         }
+        public string Name
+        {
+            get { return _name; }
+            set { SetValue(ref _name, value); }
+        }
+        public string PhoneNumber
+        {
+            get { return _phonenumber; }
+            set { SetValue(ref _phonenumber, value); }
+        }
+        public string Enable
+        {
+            get { return _enable; }
+            set { SetValue(ref _enable, value); }
+        }
         #endregion
 
         #region Processes
@@ -130,6 +155,11 @@ namespace AppTripCliente.ViewModel.ServicesVIewModel
         }
         public void WithAccount()
         {
+            
+            Name = DataUser.Name + " " + DataUser.LastName;
+            PhoneNumber = DataUser.PhoneNumber;
+            Enable = "False";
+
             BackgroudColorBtn1 = "#455968";
             BorderColorBtn1 = "#455968";
             TextColorBtn1 = "white";
@@ -140,6 +170,10 @@ namespace AppTripCliente.ViewModel.ServicesVIewModel
         }
         public void WithoutAccount()
         {
+            Name = "";
+            PhoneNumber = "";
+            Enable = "True";
+
             BackgroudColorBtn1 = "white";
             BorderColorBtn1 = "#455968";
             TextColorBtn1 = "black";
@@ -148,7 +182,11 @@ namespace AppTripCliente.ViewModel.ServicesVIewModel
             BorderColorBtn2 = "#455968";
             TextColorBtn2 = "white";
         }
-
+        public async void GetDataUser()
+        {
+            var userData = await user.GetUser();
+            DataUser = userData;
+        }
 
         public async Task loading()
         {

@@ -250,7 +250,9 @@
                                 <Entry Placeholder="Nombre"
                                        BackgroundColor="white"
                                        VerticalOptions="CenterAndExpand"
-                                       Visual="Material"/>
+                                       Visual="Material"
+                                       IsEnabled="{Binding Enable}"
+                                       Text="{Binding Name}"/>
                             </Frame>
                         </Grid>
                         <Grid Grid.Row="3"
@@ -262,7 +264,9 @@
                                 <Entry Placeholder="Numero Celular"
                                        BackgroundColor="white"
                                        VerticalOptions="CenterAndExpand"
-                                       Visual="Material" />
+                                       Visual="Material"
+                                       IsEnabled="{Binding Enable}"
+                                       Text="{Binding PhoneNumber}"/>
                             </Frame>
                         </Grid>
                         <Grid Grid.Row="4"

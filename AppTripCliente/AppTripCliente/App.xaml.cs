@@ -17,16 +17,17 @@ namespace AppTripCliente
     {
         public App()
         {
+
+            var userID = SecureStorage.GetAsync("UserID").Result;
             InitializeComponent();
-            if (!string.IsNullOrEmpty(SecureStorage.GetAsync("UserID").Result))
-             {
-                 var userID = SecureStorage.GetAsync("UserID").Result;
-                 MainPage = new TabbedPageContainer(userID);
-             }
-             else
-             {
-                 MainPage = new NavigationPage(new Login());
-             }
+            if (!string.IsNullOrEmpty(userID))
+            {
+                MainPage = new TabbedPageContainer();
+            }
+            else
+            {
+                MainPage = new NavigationPage(new Login());
+            }
         }
 
         protected override void OnStart()

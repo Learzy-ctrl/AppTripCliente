@@ -2,8 +2,10 @@
 using AppTripCliente.Data.Register;
 using AppTripCliente.Firebase;
 using AppTripCliente.Model;
+using AppTripCliente.View;
 using System;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -77,7 +79,6 @@ namespace AppTripCliente.ViewModel.LoginViewModel
 
         public async Task RegisterMethod()
         {
-            
             if (String.IsNullOrEmpty(Name))
             {
                 await DisplayAlert("Alerta", "Escribe un Nombre", "Ok");
@@ -108,6 +109,11 @@ namespace AppTripCliente.ViewModel.LoginViewModel
                 await DisplayAlert("Alerta", "Confirma tu contraseña", "Ok");
                 return;
             }
+            if (Password.Count() < 6)
+            {
+                await DisplayAlert("Alerta", "La contraseña debe ser mayor a 6 caracteres", "Ok");
+                return;
+            }
             if (Password == ConfirmPassword)
             {
                 User newUser = new User();
@@ -115,25 +121,47 @@ namespace AppTripCliente.ViewModel.LoginViewModel
                 newUser.LastName = LastName;
                 newUser.PhoneNumber = PhoneNumber;
                 newUser.Email = Email;
+                newUser.Password = Password;
 
                 UserDialogs.Instance.ShowLoading("Cargando");
-                string id = await userRepository.Register(Email, Password);
-                 if (id != "")
-                 {
-                    newUser.IdUser = id;
-                    await registerdata.InsertUser(newUser);
-                    UserDialogs.Instance.HideLoading();
-                    await DisplayAlert("Exito", "Se Registro Correctamente", "Ok");
-                 }
-                 else
-                 {
-                    UserDialogs.Instance.HideLoading();
-                    await DisplayAlert("Falla", "Error al Registrar Usuario", "Ok");
-                 }
+                try
+                {
+                    string id = await userRepository.Register(Email, Password);
+                    if (id != "")
+                    {
+                        newUser.IdUser = id;
+                        await registerdata.InsertUser(newUser);
+
+                        await userRepository.SignIn(Email, Password);
+                        await Navigation.PushAsync(new PageEmpty());
+                        await Task.Delay(2000);
+                        Application.Current.MainPage = new TabbedPageContainer();
+                        await Task.Delay(1400);
+                        UserDialogs.Instance.HideLoading();
+                    }
+                    else
+                    {
+                        UserDialogs.Instance.HideLoading();
+                        await DisplayAlert("Falla", "Error al Registrar Usuario", "Ok");
+                    }
+                }catch(Exception e)
+                {
+                    if (e.Message.Contains("INVALID_EMAIL"))
+                    {
+                        UserDialogs.Instance.HideLoading();
+                        await DisplayAlert("Error", "Correo electronico invalido", "ok");
+                    }
+                    if (e.Message.Contains("EMAIL_EXISTS"))
+                    {
+                        UserDialogs.Instance.HideLoading();
+                        await DisplayAlert("Error", "El correo ya esta registrado", "ok");
+                    }
+                }
+                
              }
              else
              {
-                 await DisplayAlert("Alerta", "Tus contraseñas no coinciden", "Ok");
+                 await DisplayAlert("Alerta", "Las contraseñas no coinciden", "Ok");
              }
             
         }

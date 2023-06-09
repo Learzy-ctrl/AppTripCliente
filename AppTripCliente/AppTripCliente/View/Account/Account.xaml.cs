@@ -16,9 +16,7 @@ namespace AppTripCliente.View.Account
         public Account ()
 		{
 			InitializeComponent ();
-			BindingContext = new AccountVM(Navigation, "sadasd");
-		}
-
-
+            BindingContext = new AccountVM(Navigation);
+        }
     }
 }

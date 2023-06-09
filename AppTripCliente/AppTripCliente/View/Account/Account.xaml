@@ -38,7 +38,7 @@
                 <Grid ColumnDefinitions="4*,6*">
                     <Image Source="user" />
                     <Label Grid.Column="1"
-                           Text="{Binding Name}"
+                           Text="{Binding NameAndLastName}"
                            FontAttributes="Bold"
                            FontSize="35"
                            TextColor="Black"
@@ -65,13 +65,13 @@
                        Grid.Column="0" 
                        VerticalOptions="StartAndExpand"
                        Margin="18,0,0,0"/>
-                <Label 
+                <Label Text="{Binding Email}"
                        TextColor="Black"
                        FontSize="15"
                        Grid.Row="0"
                        Grid.Column="1"
                        VerticalOptions="CenterAndExpand" />
-                <Label Text="5583455452"
+                <Label Text="{Binding PhoneNumber}"
                        TextColor="Black"
                        FontSize="15"
                        Grid.Row="1"
@@ -102,6 +102,9 @@
                         <Image Source="next"
                                HorizontalOptions="EndAndExpand" />
                     </StackLayout>
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding DeleteAccountCommand}"/>
+                    </Frame.GestureRecognizers>
                 </Frame>
             </Grid>
             <Label Grid.Row="3"

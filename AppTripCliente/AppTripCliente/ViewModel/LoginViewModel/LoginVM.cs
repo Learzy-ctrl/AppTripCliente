@@ -1,14 +1,10 @@
 ﻿using Acr.UserDialogs;
 using AppTripCliente.Firebase;
 using AppTripCliente.View;
-using AppTripCliente.View.Home;
 using AppTripCliente.View.Login;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace AppTripCliente.ViewModel.LoginViewModel
@@ -60,9 +56,9 @@ namespace AppTripCliente.ViewModel.LoginViewModel
 
                 if (!string.IsNullOrEmpty(token))
                 {
-                    var userID = SecureStorage.GetAsync("UserID").Result;
-                    await Navigation.PopAsync();
-                    Application.Current.MainPage = new TabbedPageContainer(userID);
+                    await Navigation.PushAsync(new PageEmpty());
+                    await Task.Delay(2000);
+                    Application.Current.MainPage = new TabbedPageContainer();
                     await Task.Delay(1400);
                     UserDialogs.Instance.HideLoading();
                 }
@@ -89,8 +85,6 @@ namespace AppTripCliente.ViewModel.LoginViewModel
                     await DisplayAlert("Error", "Correo electronico invalido", "ok");
                 }
             }
-           
-            
         }
 
         #endregion

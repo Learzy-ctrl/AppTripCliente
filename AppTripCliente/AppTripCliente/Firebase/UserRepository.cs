@@ -46,5 +46,20 @@ namespace AppTripCliente.Firebase
             }
             
         }
+
+        public async Task<bool> DeleteUser(string email, string password)
+        {
+            var token = await authProvider.SignInWithEmailAndPasswordAsync(email, password);
+            try
+            {
+                await authProvider.DeleteUserAsync(token.FirebaseToken);
+                return true;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+            
+        }
     }
 }

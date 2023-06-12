@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppTripCliente.View.Account.ChangeEmailPage"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="White">
+    <Grid RowDefinitions="1*,11*"
+          BackgroundColor="White">
+        <Grid Grid.Row="0">
+            <Image Source="LeftArrowBlack"
+                   HorizontalOptions="Start"
+                   Margin="15">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding GoBackCommand}" />
+                </Image.GestureRecognizers>
+            </Image>
+            <Frame BackgroundColor="#455968"
+                   HorizontalOptions="CenterAndExpand"
+                   VerticalOptions="CenterAndExpand"
+                   Margin="0"
+                   CornerRadius="20"
+                   Padding="10">
+                <Label Text="Cambiar correo electronico"
+                       TextColor="White"
+                       FontAttributes="Bold"
+                       FontSize="15"
+                       VerticalOptions="CenterAndExpand"
+                       HorizontalOptions="CenterAndExpand" />
+            </Frame>
+            <Image Source="LOGOTRIP"
+                   HorizontalOptions="EndAndExpand"
+                   Margin="0,0,10,0" />
+        </Grid>
+        <Grid RowDefinitions="5*,8*"
+              Grid.Row="1">
+            <Grid Grid.Row="0"
+                  RowDefinitions="2.5*,5*,5*"
+                  BackgroundColor="White">
+                <Label Text="Ingresa el nuevo correo y tu contraseña actual"
+                       FontAttributes="Bold"
+                       TextColor="Black"
+                       Margin="25,10,10,10" />
+                <Frame Grid.Row="1"
+                       BackgroundColor="Transparent">
+                    <Entry Visual="Material"
+                           BackgroundColor="White"
+                           Placeholder="Nuevo correo electronico"
+                           Keyboard="Email" 
+                           Text="{Binding Email}"/>
+                </Frame>
+                <Frame Grid.Row="2"
+                       BackgroundColor="Transparent">
+                    <Grid ColumnDefinitions="11*,1*">
+                        <Entry Visual="Material"
+                               BackgroundColor="White"
+                               Placeholder="Contraseña"
+                               IsPassword="{Binding IsPassword}"
+                               Grid.Column="0" 
+                               Text="{Binding Password}"/>
+                        <Image Source="{Binding Icon}"
+                               Grid.Column="1"
+                               Margin="1">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding PasswordEnabledCommand}"/>
+                            </Image.GestureRecognizers>
+                        </Image>
+                    </Grid>
+                    
+                </Frame>
+            </Grid>
+            <Grid Grid.Row="1"
+                  BackgroundColor="White">
+                <Button Text="Enviar"
+                        BackgroundColor="#455968"
+                        TextColor="White"
+                        VerticalOptions="EndAndExpand"
+                        HorizontalOptions="EndAndExpand"
+                        Margin="35"
+                        CornerRadius="20"
+                        Command="{Binding ChangeEmailCommand}"/>
+            </Grid>
+        </Grid>
+    </Grid>
+</ContentPage>

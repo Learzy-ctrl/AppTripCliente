@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
+using AppTripCliente.View.Account;
 
 namespace AppTripCliente.ViewModel.AccountViewModel
 {
@@ -29,11 +30,22 @@ namespace AppTripCliente.ViewModel.AccountViewModel
         {
             await Navigation.PopModalAsync();
         }
+
+        public async Task GoToChangeEmail()
+        {
+            await Navigation.PushModalAsync(new ChangeEmailPage());
+        }
+
+        public async Task GoToChangePassword()
+        {
+            await Navigation.PushModalAsync(new ChangePasswordPage());
+        }
         #endregion
 
         #region Commands
         public ICommand GoBackCommand => new Command(async () => await GoBack());
-        // public ICommand ProcesoSimplecommand => new Command(ProcesoSimple);
+        public ICommand GoToChangeEmailCommand => new Command(async () => await GoToChangeEmail());
+        public ICommand GoToChangePasswordCommand => new Command(async () => await GoToChangePassword());
         #endregion
     }
 }

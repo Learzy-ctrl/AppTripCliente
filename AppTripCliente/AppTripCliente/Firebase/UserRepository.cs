@@ -1,7 +1,5 @@
 ﻿using Firebase.Auth;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
 
@@ -11,7 +9,6 @@ namespace AppTripCliente.Firebase
     {
         static string WebAPIkey = "AIzaSyAN9MIGaBRpm7E_8ImP6uEGpkQomJkjfhg";
         FirebaseAuthProvider authProvider;
-
         public UserRepository()
         {
             authProvider = new FirebaseAuthProvider(new FirebaseConfig(WebAPIkey));
@@ -55,11 +52,39 @@ namespace AppTripCliente.Firebase
                 await authProvider.DeleteUserAsync(token.FirebaseToken);
                 return true;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return false;
             }
             
         }
+
+        public async Task<bool> ChangeEmail(string newEmail, string oldEmail, string password)
+        {
+            try
+            {
+                var token = await authProvider.SignInWithEmailAndPasswordAsync(oldEmail, password);
+                await authProvider.ChangeUserEmail(token.FirebaseToken, newEmail);
+                return true;
+            }catch(Exception e)
+            {
+                return false;
+            }
+            
+        }
+
+        public async Task<bool> ChangePassword(string NewPassword, string Email, string OldPassword)
+        {
+            try
+            {
+                var token = await authProvider.SignInWithEmailAndPasswordAsync(Email, OldPassword);
+                await authProvider.ChangeUserPassword(token.FirebaseToken, NewPassword);
+                return true;
+            }catch(Exception e)
+            {
+                return false;
+            }
+        }
+
     }
 }

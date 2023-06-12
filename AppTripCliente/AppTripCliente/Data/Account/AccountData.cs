@@ -37,6 +37,18 @@ namespace AppTripCliente.Data.Account
             
         }
 
+        public async Task PutEmail(User UserData, string email)
+        {
+            var userID = SecureStorage.GetAsync("UserID").Result;
+            UserData.Email = email;
+            await FirebaseConection.firebase.Child("Users").Child(userID).PutAsync(UserData);
+        }
 
+        public async Task PutPassword(User UserData, string NewPassword)
+        {
+            var userID = SecureStorage.GetAsync("UserID").Result;
+            UserData.Password = NewPassword;
+            await FirebaseConection.firebase.Child("Users").Child(userID).PutAsync(UserData);
+        }
     }
 }

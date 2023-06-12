@@ -78,6 +78,7 @@ namespace AppTripCliente.ViewModel.AccountViewModel
         public async Task GoToEditAccount()
         {
             UserDialogs.Instance.ShowLoading("Cargando");
+
             await Task.Delay(2000);
             await Navigation.PushModalAsync(new EditAccount());
             UserDialogs.Instance.HideLoading();
@@ -92,11 +93,7 @@ namespace AppTripCliente.ViewModel.AccountViewModel
             {
                 UserDialogs.Instance.ShowLoading("Cerrando Sesion");
                 await SecureStorage.SetAsync("UserID", "");
-                Application.Current.MainPage = new Login();
-                UserDialogs.Instance.HideLoading();
-            }
-            else
-            {
+                Application.Current.MainPage = new NavigationPage(new Login());
                 UserDialogs.Instance.HideLoading();
             }
         }
@@ -129,7 +126,7 @@ namespace AppTripCliente.ViewModel.AccountViewModel
                         await DisplayAlert("Exito", "Se ha eliminado la cuenta", "ok");
 
                         await SecureStorage.SetAsync("UserID", "");
-                        Application.Current.MainPage = new Login();
+                        Application.Current.MainPage = new NavigationPage(new Login());
                     }
                     else
                     {

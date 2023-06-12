@@ -51,18 +51,40 @@
                    VerticalOptions="CenterAndExpand"
                    CornerRadius="20"
                    BackgroundColor="Transparent">
-                <Entry Placeholder="Correo Electronico" 
+                <Entry Placeholder="Apelidos"
                        Visual="Material"
                        BackgroundColor="white"/>
             </Frame>
-            <Frame Grid.Row="3"
-                   VerticalOptions="StartAndExpand"
-                   CornerRadius="20"
-                   BackgroundColor="Transparent">
-                <Entry Placeholder="Numero celular" 
-                       Visual="Material"
-                       BackgroundColor="white"/>
-            </Frame>
+            <Grid Grid.Row="3"
+                  RowDefinitions="5*,5*">
+                <Frame Grid.Row="0">
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Cambiar correo electronico"
+                               TextColor="Black"
+                               FontAttributes="Bold"
+                               HorizontalOptions="StartAndExpand" />
+                        <Image Source="next"
+                               HorizontalOptions="EndAndExpand" />
+                    </StackLayout>
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding GoToChangeEmailCommand}" />
+                    </Frame.GestureRecognizers>
+                </Frame>
+                <Frame Grid.Row="1">
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Cambiar Contraseña"
+                               TextColor="Black"
+                               FontAttributes="Bold"
+                               HorizontalOptions="StartAndExpand" />
+                        <Image Source="next"
+                               HorizontalOptions="EndAndExpand" />
+                    </StackLayout>
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding GoToChangePasswordCommand}" />
+                    </Frame.GestureRecognizers>
+                </Frame>
+            </Grid>
+            
             <Button Grid.Row="4"
                     Text="Guardar"
                     FontAttributes="Bold"

@@ -37,7 +37,8 @@
                    BackgroundColor="Transparent">
                 <Entry Placeholder="Nombre"
                        Visual="Material"
-                       BackgroundColor="White"/>
+                       BackgroundColor="White"
+                       Text="{Binding Name}"/>
             </Frame>
             <Frame Grid.Row="1"
                    VerticalOptions="CenterAndExpand"
@@ -45,15 +46,17 @@
                    BackgroundColor="Transparent">
                 <Entry Placeholder="Apelidos" 
                        Visual="Material"
-                       BackgroundColor="white"/>
+                       BackgroundColor="white"
+                       Text="{Binding LastName}"/>
             </Frame>
             <Frame Grid.Row="2"
                    VerticalOptions="CenterAndExpand"
                    CornerRadius="20"
                    BackgroundColor="Transparent">
-                <Entry Placeholder="Apelidos"
+                <Entry Placeholder="Numero Celular"
                        Visual="Material"
-                       BackgroundColor="white"/>
+                       BackgroundColor="white"
+                       Text="{Binding PhoneNumber}"/>
             </Frame>
             <Grid Grid.Row="3"
                   RowDefinitions="5*,5*">
@@ -93,7 +96,8 @@
                     CornerRadius="25"
                     HorizontalOptions="EndAndExpand"
                     VerticalOptions="StartAndExpand"
-                    Margin="20"/>
+                    Margin="20"
+                    Command="{Binding PutUserDataCommand}"/>
         </Grid>
     </Grid>
 </ContentPage>

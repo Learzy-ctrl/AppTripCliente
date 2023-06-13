@@ -9,6 +9,7 @@ namespace AppTripCliente.Firebase
     {
         static string WebAPIkey = "AIzaSyAN9MIGaBRpm7E_8ImP6uEGpkQomJkjfhg";
         FirebaseAuthProvider authProvider;
+
         public UserRepository()
         {
             authProvider = new FirebaseAuthProvider(new FirebaseConfig(WebAPIkey));

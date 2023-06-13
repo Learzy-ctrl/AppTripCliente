@@ -7,6 +7,7 @@ using AppTripCliente.View.Account;
 using Xamarin.Essentials;
 using AppTripCliente.Data.Account;
 using AppTripCliente.Firebase;
+using System;
 
 namespace AppTripCliente.ViewModel.AccountViewModel
 {
@@ -100,12 +101,21 @@ namespace AppTripCliente.ViewModel.AccountViewModel
 
         public async void PrintUserData()
         {
-            var User = await Data.GetUser();
-            NameAndLastName = User.Name + " " + User.LastName;
-            Email = User.Email;
-            PhoneNumber = User.PhoneNumber;
-            Password = User.Password;
-            UserID = User.IdUser;
+            try
+            {
+                var User = await Data.GetUser();
+                NameAndLastName = User.Name + " " + User.LastName;
+                Email = User.Email;
+                PhoneNumber = User.PhoneNumber;
+                Password = User.Password;
+                UserID = User.IdUser;
+            }
+            catch (Exception e)
+            {
+                await SecureStorage.SetAsync("UserID", "");
+                Application.Current.MainPage = new NavigationPage(new Login());
+            }
+                
         }
 
         public async Task DeleteAccount()

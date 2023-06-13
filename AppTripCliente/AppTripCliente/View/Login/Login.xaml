@@ -19,28 +19,43 @@
                BackgroundColor="white"
                Margin="20,-150,20,170"
                CornerRadius="25">
-            <StackLayout>
+            <Grid RowDefinitions="2*,6*,8*,2*">
                 <Label Text="Iniciar Sesion"
                        FontAttributes="Bold"
                        TextColor="Black"
-                       FontSize="20" 
-                       Margin="12,0,0,0"/>
-                <Entry Placeholder="Correo Electronico"
-                       Margin="20" 
-                       Visual="Material"
-                       BackgroundColor="White"
-                       PlaceholderColor="#B4B4B4"
-                       Keyboard="Email"
-                       Text="{Binding Email}"/>
-                <Entry Placeholder="Contraseña"
-                       IsPassword="True"
-                       Margin="20" 
-                       Visual="Material"
-                       BackgroundColor="White"
-                       PlaceholderColor="#B4B4B4"
-                       Text="{Binding Password}"/>
+                       FontSize="20"
+                       Margin="12,0,0,0"
+                       Grid.Row="0"/>
+                <Grid Grid.Row="1">
+                    <Entry Placeholder="Correo Electronico"
+                           Margin="20,10,20,-10"
+                           Visual="Material"
+                           BackgroundColor="White"
+                           PlaceholderColor="#B4B4B4"
+                           Keyboard="Email"
+                           Text="{Binding Email}" />
+                </Grid>
                 
-            </StackLayout>
+                <Grid Grid.Row="2"
+                      ColumnDefinitions="11*,1*">
+                    <Entry Placeholder="Contraseña"
+                           IsPassword="{Binding IsPassword1}"
+                           BackgroundColor="White"
+                           Margin="20"
+                           Visual="Material"
+                           PlaceholderColor="#B4B4B4"
+                           Text="{Binding Password}" />
+                    <Image Grid.Column="1"
+                           Source="{Binding Icon1}">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding IsEnabledPasswordCommand}"/>
+                        </Image.GestureRecognizers>
+                    </Image>
+                </Grid>
+                
+            </Grid>
+            
+                
                    
         </Frame>
         

@@ -24,6 +24,10 @@ namespace AppTripCliente.ViewModel.LoginViewModel
         string _email;
         string _password;
         string _confirmpass;
+        string _ispassword1 = "True";
+        string _icon1 = "hide";
+        string _ispassword2 = "True";
+        string _icon2 = "hide";
         #endregion
 
         #region Constructor
@@ -66,6 +70,29 @@ namespace AppTripCliente.ViewModel.LoginViewModel
         {
             get { return _confirmpass; }
             set { SetValue(ref _confirmpass, value); }
+        }
+
+        public string IsPassword1
+        {
+            get { return _ispassword1; }
+            set { SetValue(ref _ispassword1, value); }
+        }
+
+        public string Icon1
+        {
+            get { return _icon1; }
+            set { SetValue(ref _icon1, value); }
+        }
+
+        public string IsPassword2
+        {
+            get { return _ispassword2; }
+            set { SetValue(ref _ispassword2, value); }
+        }
+        public string Icon2
+        {
+            get { return _icon2; }
+            set { SetValue(ref _icon2, value); }
         }
         #endregion
 
@@ -165,12 +192,40 @@ namespace AppTripCliente.ViewModel.LoginViewModel
              }
             
         }
+
+        public void IsEnabledPassword()
+        {
+            if(IsPassword1 == "True")
+            {
+                IsPassword1 = "False";
+                Icon1 = "view";
+            }
+            else
+            {
+                IsPassword1 = "True";
+                Icon1 = "hide";
+            }
+        }
+        public void IsEnabledConfirmPassword()
+        {
+            if (IsPassword2 == "True")
+            {
+                IsPassword2 = "False";
+                Icon2 = "view";
+            }
+            else
+            {
+                IsPassword2 = "True";
+                Icon2 = "hide";
+            }
+        }
         #endregion
 
         #region Commands
         public ICommand GoBackCommand => new Command(async () => await GoBack());
         public ICommand RegisterCommand => new Command(async () => await RegisterMethod());
-        // public ICommand ProcesoSimplecommand => new Command(ProcesoSimple);
+        public ICommand IsEnabledPasswordCommand => new Command(IsEnabledPassword);
+        public ICommand IsEnabledConfirmPasswordCommand => new Command(IsEnabledConfirmPassword);
         #endregion
     }
 }

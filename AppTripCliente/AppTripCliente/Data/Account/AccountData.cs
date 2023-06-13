@@ -50,5 +50,19 @@ namespace AppTripCliente.Data.Account
             UserData.Password = NewPassword;
             await FirebaseConection.firebase.Child("Users").Child(userID).PutAsync(UserData);
         }
+
+        public async Task<bool> PutUser(User user)
+        {
+            try
+            {
+                var UserID = SecureStorage.GetAsync("UserID").Result;
+                await FirebaseConection.firebase.Child("Users").Child(UserID).PutAsync(user);
+                return true;
+            }catch(Exception)
+            {
+                return false;
+            }
+            
+        }
     }
 }

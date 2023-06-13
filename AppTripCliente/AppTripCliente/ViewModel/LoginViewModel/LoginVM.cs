@@ -23,9 +23,9 @@ namespace AppTripCliente.ViewModel.LoginViewModel
         #region Variables
         string _email;
         string _password;
+        string _ispassword1 = "True";
+        string _icon1 = "hide";
         #endregion
-
-
 
         #region Objetcs
         public string Email
@@ -37,6 +37,16 @@ namespace AppTripCliente.ViewModel.LoginViewModel
         {
             get { return _password; }
             set { SetValue(ref _password, value); }
+        }
+        public string IsPassword1
+        {
+            get { return _ispassword1; }
+            set { SetValue(ref _ispassword1, value); }
+        }
+        public string Icon1
+        {
+            get { return _icon1; }
+            set { SetValue(ref _icon1, value); }
         }
         #endregion
 
@@ -87,12 +97,27 @@ namespace AppTripCliente.ViewModel.LoginViewModel
             }
         }
 
+        public void IsEnabledPassword()
+        {
+            if (IsPassword1 == "True")
+            {
+                IsPassword1 = "False";
+                Icon1 = "view";
+            }
+            else
+            {
+                IsPassword1 = "True";
+                Icon1 = "hide";
+            }
+        }
+
+
         #endregion
 
         #region Commands
         public ICommand GoToRegisterCommand => new Command(async () => await GoToRegister());
         public ICommand GoToTabbedpageCommand => new Command(async () => await GoToTabbedpage());
-        // public ICommand ProcesoSimplecommand => new Command(ProcesoSimple);
+        public ICommand IsEnabledPasswordCommand => new Command(IsEnabledPassword);
         #endregion
     }
 }

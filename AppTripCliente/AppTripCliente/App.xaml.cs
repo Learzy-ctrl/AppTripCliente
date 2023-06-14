@@ -1,5 +1,6 @@
 ﻿using AppTripCliente.View;
 using AppTripCliente.View.Login;
+using AppTripCliente.View.Services;
 using System;
 using Xamarin.Essentials;
 using Xamarin.Forms;
@@ -14,11 +15,11 @@ namespace AppTripCliente
             InitializeComponent();
             if (!string.IsNullOrEmpty(userID))
             {
-                MainPage = new TabbedPageContainer();
+                 MainPage = new TabbedPageContainer();
             }
             else
             {
-                MainPage = new NavigationPage(new Login());
+                 MainPage = new NavigationPage(new Login());
             }
         }
 

@@ -264,7 +264,7 @@
                                                 Visual="Material"
                                                 BackgroundColor="White"
                                                 Time="{Binding BackDateTime}"
-                                                IsEnabled="{Binding }"/>
+                                                IsEnabled="{Binding EnablePicker}"/>
                                 </StackLayout>
                             </Frame>
                         </Grid>

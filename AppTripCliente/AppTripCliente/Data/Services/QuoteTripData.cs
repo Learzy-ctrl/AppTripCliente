@@ -19,6 +19,7 @@ namespace AppTripCliente.Data.Services
                 var response = await FirebaseConection.firebase.Child("OutstandingTravelFees").Child(UserId).PostAsync(tripModel);
                 var ObjectKey = response.Key;
                 tripModel.Key = ObjectKey;
+                tripModel.UserId = UserId;
                 await FirebaseConection.firebase.Child("OutstandingTravelFees").Child(UserId).Child(ObjectKey).PutAsync(tripModel);
                 return true;
             }

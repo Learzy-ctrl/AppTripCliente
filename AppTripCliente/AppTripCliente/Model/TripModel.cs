@@ -6,6 +6,7 @@ namespace AppTripCliente.Model
 {
     public class TripModel
     {
+        public string UserId { get; set; }
         public string Key { get; set; }
         public string PointOrigin { get; set; }
         public string EndPoint { get; set; }
@@ -18,5 +19,6 @@ namespace AppTripCliente.Model
         public string BackDateTime { get; set; }
         public string Rounded { get; set; }
         public string NumberPassengers { get; set; }
+        public string OptionQuote { get; set; }
     }
 }

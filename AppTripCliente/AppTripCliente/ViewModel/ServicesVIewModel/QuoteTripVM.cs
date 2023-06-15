@@ -35,6 +35,7 @@ namespace AppTripCliente.ViewModel.ServicesVIewModel
 
         #region Variables
         string _enable;
+        string _enablepicker;
         string _backgroudcolorbtn1 = "white";
         string _bordercolorbtn1 = "#455968";
         string _backgroudcolorbtn2 = "#455968";
@@ -58,6 +59,11 @@ namespace AppTripCliente.ViewModel.ServicesVIewModel
         #endregion
 
         #region Objetcs
+        public string EnablePicker
+        {
+            get { return _enablepicker; }
+            set { SetValue(ref _enablepicker, value); }
+        }
         public string IsCheckedYes
         {
             get { return _ischeckedyes; }
@@ -66,7 +72,7 @@ namespace AppTripCliente.ViewModel.ServicesVIewModel
         public string IsCheckedNo
         {
             get { return _ischeckedno; }
-            set { SetValue(ref _ischeckedno, value); }
+            set { SetValue(ref _ischeckedno, value); DatePickerEnabled(); }
         }
         public string Enable
         {
@@ -166,6 +172,17 @@ namespace AppTripCliente.ViewModel.ServicesVIewModel
         #endregion
 
         #region Processes
+        public void DatePickerEnabled()
+        {
+            if(IsCheckedNo == "True")
+            {
+                EnablePicker = "False";
+            }
+            else
+            {
+                EnablePicker = "True";
+            }
+        }
         public async Task GoBack()
         {
             await Navigation.PopModalAsync();
@@ -237,20 +254,18 @@ namespace AppTripCliente.ViewModel.ServicesVIewModel
             }
             if (string.IsNullOrEmpty(StartDate))
             {
-                await DisplayAlert("Alerta", "Indica la fecha de inicio", "OK");
-                return;
+                StartDate = DateTime.Now.ToString();
             }
             if (string.IsNullOrEmpty(EndDate))
             {
-                await DisplayAlert("Alerta", "Indica la fecha de finalizacion", "OK");
-                return;
+                EndDate = DateTime.Now.ToString();
             }
             if (StartDateTime.ToString() == "00:00:00")
             {
                 await DisplayAlert("Alerta", "Indica la hora de inicio", "OK");
                 return;
             }
-            if (BackDateTime.ToString() == "00:00:00")
+            if (BackDateTime.ToString() == "00:00:00" && IsCheckedNo == "False")
             {
                 await DisplayAlert("Alerta", "Indica la hora de retorno", "OK");
                 return;
@@ -285,15 +300,19 @@ namespace AppTripCliente.ViewModel.ServicesVIewModel
                 tripModel.StartDate = StartDate;
                 tripModel.EndDate = EndDate;
                 tripModel.StartDateTime = StartDateTime.ToString();
-                tripModel.BackDateTime = BackDateTime.ToString();
+                if(EnablePicker == "True")
+                {
+                    tripModel.BackDateTime = BackDateTime.ToString();
+                }
                 tripModel.Rounded = Rounded;
                 tripModel.NumberPassengers = NumberPassengers;
-
+                tripModel.OptionQuote = OptionQuote;
                 var IsValid = await tripData.SendTripDataAsync(tripModel);
                 UserDialogs.Instance.HideLoading();
                 if (IsValid)
                 {
                     await DisplayAlert("Exito", "Se ha enviado tu informacion correctamente, en unos momentos te enviaremos una respuesta", "OK");
+                    await Navigation.PopModalAsync();
                 }
                 else
                 {

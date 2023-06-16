@@ -18,5 +18,5 @@ namespace AppTripCliente.View.Home
 			InitializeComponent ();
 			BindingContext = new HomeVM(Navigation);
 		}
-	}
+    }
 }

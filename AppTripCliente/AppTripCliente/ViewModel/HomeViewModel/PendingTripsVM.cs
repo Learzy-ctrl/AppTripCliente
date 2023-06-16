@@ -1,7 +1,6 @@
-﻿using AppTripCliente.View.Services;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using AppTripCliente.Data.Home;
+using AppTripCliente.Model;
+using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -10,21 +9,37 @@ namespace AppTripCliente.ViewModel.HomeViewModel
 {
     public class PendingTripsVM : BaseViewModel
     {
-        #region Variables
-        #endregion
-
+        private readonly TripData pending = null;
         #region Constructor
         public PendingTripsVM(INavigation navigation)
         {
             Navigation = navigation;
+            pending = new TripData();
+            PrintAllPendingTrip();
         }
         #endregion
 
+        #region Variables
+        ObservableCollection<TripModel> _triplist;
+        #endregion
+
         #region Objetcs
+        public ObservableCollection<TripModel> TripList
+        {
+            get { return _triplist; }
+            set { SetValue(ref _triplist, value);
+                OnPropertyChanged();
+            }
+        }
         #endregion
 
         #region Processes
 
+        public async Task PrintAllPendingTrip()
+        {
+
+            TripList = await pending.GetAllPendingTrips();
+        }
 
         public async Task GoBack()
         {

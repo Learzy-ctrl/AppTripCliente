@@ -20,5 +20,6 @@ namespace AppTripCliente.Model
         public string Rounded { get; set; }
         public string NumberPassengers { get; set; }
         public string OptionQuote { get; set; }
+        public string TotalPrice { get; set; }
     }
 }

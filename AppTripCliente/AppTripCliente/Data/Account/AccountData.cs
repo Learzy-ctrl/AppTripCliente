@@ -22,7 +22,6 @@ namespace AppTripCliente.Data.Account
         {
             await FirebaseConection.firebase.Child("Users").PostAsync(user);
         }
-
         public async Task<bool> DeleteAccountUser(string userId)
         {
             try

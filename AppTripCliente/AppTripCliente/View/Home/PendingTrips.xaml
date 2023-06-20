@@ -8,12 +8,13 @@
             <Grid RowDefinitions="1*,10*">
                 <Image Source="LeftArrowBlack"
                        HorizontalOptions="StartAndExpand"
-                       Margin="10">
+                       Margin="10"
+                       HeightRequest="30">
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding GoBackCommand}"/>
                     </Image.GestureRecognizers>
                 </Image>
-                <Label Text="Viajes Pendientes"
+                <Label Text="Cotizaciones Pendientes"
                        TextColor="Black"
                        FontAttributes="Bold"
                        FontSize="20"
@@ -21,7 +22,8 @@
                        HorizontalOptions="CenterAndExpand" />
                 <CollectionView Grid.Row="1"
                                 ItemsSource="{Binding TripList}"
-                                x:Name="List">
+                                x:Name="List"
+                                IsVisible="{Binding CollectionVisible}">
                     <CollectionView.ItemsLayout>
                         <GridItemsLayout Orientation="Vertical"
                                          VerticalItemSpacing="15"/>
@@ -114,6 +116,14 @@
                     </CollectionView.ItemTemplate>
                     
                 </CollectionView>
+                <Label Grid.Row="1"
+                       IsVisible="{Binding TextVisible}"
+                       Text="No tienes Cotizaciones pendientes"
+                       TextColor="Black"
+                       FontAttributes="Bold"
+                       FontSize="15"
+                       VerticalOptions="CenterAndExpand"
+                       HorizontalOptions="CenterAndExpand" />
                 
             </Grid>
         </Frame>

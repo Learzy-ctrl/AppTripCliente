@@ -27,17 +27,19 @@ namespace AppTripCliente.ViewModel.ServicesVIewModel
         #region Processes
 
 
-        public void GoToMailBox()
+        public async void GoToMailBox()
         {
             UserDialogs.Instance.ShowLoading("Cargando");
-            Navigation.PushModalAsync(new MailBox());
+            await Task.Delay(500);
+            await Navigation.PushModalAsync(new MailBox());
             UserDialogs.Instance.HideLoading();
         }
 
-        public void GoToQuoteTrip(string option)
+        public async void GoToQuoteTrip(string option)
         {
             UserDialogs.Instance.ShowLoading("Cargando");
-            Navigation.PushModalAsync(new QuoteTrip(option));
+            await Task.Delay(500);
+            await Navigation.PushModalAsync(new QuoteTrip(option));
             UserDialogs.Instance.HideLoading();
         }
         #endregion

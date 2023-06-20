@@ -29,7 +29,7 @@ namespace AppTripCliente.ViewModel.HistoryViewModel
         public void GoToTripDetail()
         {
             UserDialogs.Instance.ShowLoading("Cargando");
-            Navigation.PushModalAsync(new TripDetail());
+            Navigation.PushModalAsync(new TripDetail(null));
             UserDialogs.Instance.HideLoading();
         }
 

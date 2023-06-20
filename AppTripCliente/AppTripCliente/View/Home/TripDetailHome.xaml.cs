@@ -1,5 +1,5 @@
 ﻿using AppTripCliente.Model;
-using AppTripCliente.ViewModel.HistoryViewModel;
+using AppTripCliente.ViewModel.HomeViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,15 +9,15 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace AppTripCliente.View.History
+namespace AppTripCliente.View.Home
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class TripDetail : ContentPage
+    public partial class TripDetailHome : ContentPage
     {
-        public TripDetail(TripModel tripModel)
+        public TripDetailHome(TripModel tripModel)
         {
             InitializeComponent();
-            BindingContext = new TripDetailVM(Navigation, tripModel);
+            BindingContext = new TripDetailHomeVM(Navigation, tripModel);
         }
     }
 }

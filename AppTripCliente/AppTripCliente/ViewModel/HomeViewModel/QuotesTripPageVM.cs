@@ -1,83 +1,84 @@
 ﻿using Acr.UserDialogs;
 using AppTripCliente.Data.Home;
 using AppTripCliente.Model;
-using AppTripCliente.View.History;
 using AppTripCliente.View.Home;
-using AppTripCliente.View.Login;
-using AppTripCliente.View.Services;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace AppTripCliente.ViewModel.HomeViewModel
 {
-    public class HomeVM : BaseViewModel
+    public class QuotesTripPageVM : BaseViewModel
     {
         private readonly TripData data = null;
         #region Constructor
-        public HomeVM(INavigation navigation)
+        public QuotesTripPageVM(INavigation navigation)
         {
             Navigation = navigation;
             data = new TripData();
-            PrintAllTripQuote();
+            QuoteExist();
         }
         #endregion
 
         #region Variables
         ObservableCollection<TripModel> _triplist = new ObservableCollection<TripModel>();
         string _isnull;
+        string _visible = "True";
         #endregion
 
         #region Objetcs
         public ObservableCollection<TripModel> TripList
         {
             get { return _triplist; }
-            set { SetValue(ref _triplist, value);
-                OnPropertyChanged();}
+            set
+            {
+                SetValue(ref _triplist, value);
+                OnPropertyChanged();
+            }
+        }
+
+        public string IsNull
+        {
+            get { return _isnull; }
+            set { SetValue(ref _isnull, value); }
+        }
+        public string Visible
+        {
+            get { return _visible; }
+            set { SetValue(ref _visible, value); }
         }
         #endregion
 
         #region Processes
-
+        public async Task QuoteExist()
+        {
+            var count = await data.CountQuotes();
+            if(count != 0)
+            {
+                IsNull = "True";
+                Visible = "False";
+                await PrintAllTripQuote();
+            }
+            else
+            {
+                IsNull = "False";
+                Visible = "True";
+            }
+        }
         public async Task PrintAllTripQuote()
         {
             TripList = await data.GetAllTripQuote();
         }
 
-        public async Task GoToQuoteTrip()
+        public async Task GoBack()
         {
-            UserDialogs.Instance.ShowLoading("Cargando");
-            await Task.Delay(500);
-            await Navigation.PushModalAsync(new QuoteTrip(""));
-            UserDialogs.Instance.HideLoading();
+            await Navigation.PopModalAsync();
         }
-
-        public async Task GoToPendingTrips()
-        {
-            UserDialogs.Instance.ShowLoading("Cargando");
-            await Task.Delay(500);
-            await Navigation.PushModalAsync(new PendingTrips());
-            UserDialogs.Instance.HideLoading();
-        }
-
-        public async Task GoToWithQuotesTripPage()
-        {
-            UserDialogs.Instance.ShowLoading("Cargando");
-            await Task.Delay(500);
-            await Navigation.PushModalAsync(new View.Home.QuotesTripPage());
-            UserDialogs.Instance.HideLoading();
-        }
-
         public async Task GoToTripDetail(TripModel tripModel)
         {
             await Navigation.PushModalAsync(new TripDetailHome(tripModel));
         }
-
         public async Task TripConfirm(TripModel Model)
         {
             UserDialogs.Instance.ShowLoading("Cargando");
@@ -117,9 +118,7 @@ namespace AppTripCliente.ViewModel.HomeViewModel
         #endregion
 
         #region Commands
-        public ICommand GoToQuoteTripCommand => new Command(async () => await GoToQuoteTrip());
-        public ICommand GoToPendingTripsCommand => new Command(async () => await GoToPendingTrips());
-        public ICommand GoToWithQuotesTripPageCommand => new Command(async () => await GoToWithQuotesTripPage());
+        public ICommand GoBackCommand => new Command(async () => await GoBack());
         public ICommand GoToTripDetailCommand => new Command<TripModel>(async (m) => await GoToTripDetail(m));
         public ICommand TripConfirmCommand => new Command<TripModel>(async (m) => await TripConfirm(m));
         public ICommand TripRejectedCommand => new Command<TripModel>(async (m) => await TripRejected(m));

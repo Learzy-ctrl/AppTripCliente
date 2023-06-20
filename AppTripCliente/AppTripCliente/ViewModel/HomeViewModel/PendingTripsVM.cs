@@ -15,12 +15,15 @@ namespace AppTripCliente.ViewModel.HomeViewModel
         {
             Navigation = navigation;
             pending = new TripData();
+            CountPendingTrip();
             PrintAllPendingTrip();
         }
         #endregion
 
         #region Variables
         ObservableCollection<TripModel> _triplist;
+        string _collectionvsible;
+        string _textvisible;
         #endregion
 
         #region Objetcs
@@ -31,6 +34,17 @@ namespace AppTripCliente.ViewModel.HomeViewModel
                 OnPropertyChanged();
             }
         }
+        public string CollectionVisible
+        {
+            get { return _collectionvsible; }
+            set{SetValue(ref _collectionvsible, value);}
+        }
+        public string TextVisible
+        {
+            get { return _textvisible; }
+            set { SetValue(ref _textvisible, value); }
+        }
+
         #endregion
 
         #region Processes
@@ -41,6 +55,20 @@ namespace AppTripCliente.ViewModel.HomeViewModel
             TripList = await pending.GetAllPendingTrips();
         }
 
+        public async void CountPendingTrip()
+        {
+            var count = await pending.CountPendingTripAsync();
+            if(count != 0)
+            {
+                CollectionVisible = "True";
+                TextVisible = "False";
+            }
+            else
+            {
+                CollectionVisible = "False";
+                TextVisible = "True";
+            }
+        }
         public async Task GoBack()
         {
             await Navigation.PopModalAsync();

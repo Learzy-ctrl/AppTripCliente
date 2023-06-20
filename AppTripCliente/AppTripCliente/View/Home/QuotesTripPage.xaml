@@ -1,0 +1,143 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppTripCliente.View.Home.QuotesTripPage"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="White">
+    <Grid RowDefinitions="1*,11*">
+        <Label Grid.Row="1"
+               Text="No tienes ninguna cotizacion realizada"
+               TextColor="black"
+               FontAttributes="Bold"
+               FontSize="15"
+               IsVisible="{Binding Visible}"
+               VerticalOptions="CenterAndExpand"
+               HorizontalOptions="CenterAndExpand"/>
+        <CollectionView Grid.Row="1"
+                        ItemsSource="{Binding TripList}"
+                        x:Name="List"
+                        IsVisible="{Binding IsNull}">
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Vertical"
+                                 VerticalItemSpacing="15" />
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame>
+                        <Frame BackgroundColor="#F0F0F0"
+                               CornerRadius="20"
+                               Margin="20">
+                            <Frame BackgroundColor="White"
+                                   CornerRadius="20"
+                                   Margin="-10">
+                                <Grid RowDefinitions="1*,1*,1*,1*,1*,1*,1*,1.5*">
+                                    <Label Text="Viaje a:"
+                                           FontAttributes="Bold"
+                                           TextColor="Black"
+                                           Grid.Row="0"
+                                           HorizontalOptions="StartAndExpand" />
+                                    <Label Text="{Binding EndPoint}"
+                                           TextColor="Black"
+                                           Grid.Row="0"
+                                           HorizontalOptions="EndAndExpand" />
+                                    <Label Text="Fecha:"
+                                           FontAttributes="Bold"
+                                           TextColor="Black"
+                                           Grid.Row="1"
+                                           HorizontalOptions="StartAndExpand" />
+                                    <Label Text="{Binding StartDate}"
+                                           TextColor="Black"
+                                           Grid.Row="1"
+                                           HorizontalOptions="EndAndExpand" />
+                                    <Label Text="Hora:"
+                                           FontAttributes="Bold"
+                                           TextColor="Black"
+                                           Grid.Row="2"
+                                           HorizontalOptions="StartAndExpand" />
+                                    <Label Text="{Binding StartDateTime}"
+                                           TextColor="Black"
+                                           Grid.Row="2"
+                                           HorizontalOptions="EndAndExpand" />
+                                    <Label Text="Punto de origen:"
+                                           FontAttributes="Bold"
+                                           TextColor="Black"
+                                           Grid.Row="3"
+                                           HorizontalOptions="StartAndExpand" />
+                                    <Label Text="{Binding PointOrigin}"
+                                           TextColor="Black"
+                                           Grid.Row="3"
+                                           HorizontalOptions="EndAndExpand" />
+                                    <Label Text="Numero de pasajeros:"
+                                           FontAttributes="Bold"
+                                           TextColor="Black"
+                                           Grid.Row="4"
+                                           HorizontalOptions="StartAndExpand" />
+                                    <Label Text="{Binding NumberPassengers}"
+                                           TextColor="Black"
+                                           Grid.Row="4"
+                                           HorizontalOptions="EndAndExpand" />
+                                    <Label Text="Viaje Redondo:"
+                                           FontAttributes="Bold"
+                                           TextColor="Black"
+                                           Grid.Row="5"
+                                           HorizontalOptions="StartAndExpand" />
+                                    <Label Text="{Binding Rounded}"
+                                           TextColor="Black"
+                                           Grid.Row="5"
+                                           HorizontalOptions="EndAndExpand" />
+                                    <StackLayout Orientation="Horizontal"
+                                                 Grid.Row="6">
+                                        <Label Text="Precio total:"
+                                               FontAttributes="Bold"
+                                               TextColor="Black"
+                                               HorizontalOptions="EndAndExpand" />
+                                        <Label Text="{Binding TotalPrice}"
+                                               TextColor="Black"
+                                               HorizontalOptions="End" />
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal"
+                                                 Grid.Row="7">
+                                        <Button HorizontalOptions="EndAndExpand"
+                                                Text="Rechazar"
+                                                TextColor="White"
+                                                CornerRadius="25"
+                                                BackgroundColor="#C44B4B"
+                                                Command="{Binding Path=BindingContext.TripRejectedCommand, Source={x:Reference List}}"
+                                                CommandParameter="{Binding .}" />
+                                        <Button HorizontalOptions="End"
+                                                Text="Confirmar"
+                                                TextColor="White"
+                                                CornerRadius="25"
+                                                BackgroundColor="#50964E"
+                                                Command="{Binding Path=BindingContext.TripConfirmCommand, Source={x:Reference List}}"
+                                                CommandParameter="{Binding .}" />
+                                    </StackLayout>
+                                </Grid>
+                            </Frame>
+                        </Frame>
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding Path=BindingContext.GoToTripDetailCommand, Source={x:Reference List}}"
+                                                  CommandParameter="{Binding .}" />
+                        </Frame.GestureRecognizers>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        <Image Source="LeftArrowBlack"
+               HorizontalOptions="StartAndExpand"
+               VerticalOptions="StartAndExpand"
+               HeightRequest="35"
+               Margin="20">
+
+            <Image.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding GoBackCommand}"/>
+            </Image.GestureRecognizers>
+        </Image>
+        <Image Grid.Row="0"
+               Source="LOGOTRIP"
+               HorizontalOptions="EndAndExpand"
+               VerticalOptions="StartAndExpand"
+               Margin="0,0,15,0"/>
+    </Grid>
+    
+</ContentPage>

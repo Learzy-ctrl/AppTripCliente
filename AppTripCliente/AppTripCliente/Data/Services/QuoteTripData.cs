@@ -2,8 +2,6 @@
 using AppTripCliente.Model;
 using Firebase.Database.Query;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
 

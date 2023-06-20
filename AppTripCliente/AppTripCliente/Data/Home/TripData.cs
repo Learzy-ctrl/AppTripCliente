@@ -3,7 +3,6 @@ using AppTripCliente.Model;
 using Firebase.Database;
 using Firebase.Database.Query;
 using System.Collections.ObjectModel;
-using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
 

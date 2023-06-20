@@ -1,3 +1,204 @@
 {
-
+  "ConfirmedTrips": {
+    "IPaWb9JYXOPMavwMWjXjCWOREkU2": {
+      "-NYPDo02_LQ8nQw6RhzS": {
+        "EndDate": "16/06/2023 0:23:16",
+        "EndPoint": "Cargil",
+        "Key": "-NYPDo02_LQ8nQw6RhzS",
+        "Name": "Israel el chido Curiel",
+        "NumberPassengers": "1",
+        "OptionQuote": "Transporte Ejecutivo",
+        "PhoneNumber": "5524936721",
+        "PointOrigin": "Tula centro",
+        "Rounded": "No",
+        "StartDate": "16/06/2023 0:23:16",
+        "StartDateTime": "06:30:00",
+        "TotalPrice": "7000",
+        "UserId": "IPaWb9JYXOPMavwMWjXjCWOREkU2"
+      },
+      "-NYPDrm7G1YajP_zhz9p": {
+        "BackDateTime": "20:30:00",
+        "EndDate": "06/21/2023 00:00:00",
+        "EndPoint": "Acapulco",
+        "Key": "-NYPDrm7G1YajP_zhz9p",
+        "Name": "Israel el chido Curiel",
+        "NumberPassengers": "4",
+        "OptionQuote": "",
+        "PhoneNumber": "5524936721",
+        "PointOrigin": "Tula",
+        "Rounded": "Si",
+        "StartDate": "06/19/2023 00:00:00",
+        "StartDateTime": "06:50:00",
+        "TotalPrice": "7000",
+        "UserId": "IPaWb9JYXOPMavwMWjXjCWOREkU2"
+      },
+      "-NYPFAzb3K7pAX3fcLbn": {
+        "EndDate": "16/06/2023 0:23:16",
+        "EndPoint": "Cargil",
+        "Key": "-NYPFAzb3K7pAX3fcLbn",
+        "Name": "Israel el chido Curiel",
+        "NumberPassengers": "1",
+        "OptionQuote": "Transporte Ejecutivo",
+        "PhoneNumber": "5524936721",
+        "PointOrigin": "Tula centro",
+        "Rounded": "No",
+        "StartDate": "16/06/2023 0:23:16",
+        "StartDateTime": "06:30:00",
+        "TotalPrice": "60000",
+        "UserId": "IPaWb9JYXOPMavwMWjXjCWOREkU2"
+      }
+    },
+    "N6S9Dh1BX7Qe4GEbs8AluIiFKiG3": {
+      "-NYPRR6pbhUfX-RmRxH9": {
+        "EndDate": "6/16/2023 2:39:51 p. m.",
+        "EndPoint": "jdbsja",
+        "Key": "-NYPRR6pbhUfX-RmRxH9",
+        "Name": "David Israel  Curiel Duran ",
+        "NumberPassengers": "4",
+        "OptionQuote": "",
+        "PhoneNumber": "5583455452",
+        "PointOrigin": "hdjskab",
+        "Rounded": "No",
+        "StartDate": "6/16/2023 2:39:51 p. m.",
+        "StartDateTime": "06:00:00",
+        "TotalPrice": "7000",
+        "UserId": "N6S9Dh1BX7Qe4GEbs8AluIiFKiG3"
+      },
+      "-NYP_e3j6fl7lYXCnO9z": {
+        "BackDateTime": "20:00:00",
+        "EndDate": "06/24/2023 00:00:00",
+        "EndPoint": "Cdmx",
+        "Key": "-NYP_e3j6fl7lYXCnO9z",
+        "Name": "David Israel  Curiel Duran ",
+        "NumberPassengers": "4",
+        "OptionQuote": "",
+        "PhoneNumber": "5583455452",
+        "PointOrigin": "Tula",
+        "Rounded": "Si",
+        "StartDate": "06/22/2023 00:00:00",
+        "StartDateTime": "06:30:00",
+        "TotalPrice": "1000",
+        "UserId": "N6S9Dh1BX7Qe4GEbs8AluIiFKiG3"
+      }
+    }
+  },
+  "OutstandingTravelFees": {
+    "IPaWb9JYXOPMavwMWjXjCWOREkU2": {
+      "-NY47JbbfMqh4Tgt74dz": {
+        "EndDate": "06/18/2023 00:00:00",
+        "EndPoint": "Nueva santa Maria",
+        "Key": "-NY47JbbfMqh4Tgt74dz",
+        "Name": "Israel el chido Curiel",
+        "NumberPassengers": "1",
+        "OptionQuote": "",
+        "PhoneNumber": "5524936721",
+        "PointOrigin": "Jilotepec",
+        "Rounded": "No",
+        "StartDate": "06/18/2023 00:00:00",
+        "StartDateTime": "07:00:00",
+        "UserId": "IPaWb9JYXOPMavwMWjXjCWOREkU2"
+      }
+    }
+  },
+  "QuotesMade": {
+    "ft9TYsR6rUd86bjbtFucx9PwsgH2": {
+      "-NY-xsdXpwDXDnXzM3Ey": {
+        "BackDateTime": "10:00:00",
+        "EndDate": "06/19/2023 00:00:00",
+        "EndPoint": "CDMX",
+        "Key": "-NY-xsdXpwDXDnXzM3Ey",
+        "Name": "david curiel",
+        "NumberPassengers": "8",
+        "PhoneNumber": "5583455452",
+        "PointOrigin": "Tula",
+        "Rounded": "Si",
+        "StartDate": "06/17/2023 00:00:00",
+        "StartDateTime": "06:30:00",
+        "TotalPrice": "5000",
+        "UserId": "ft9TYsR6rUd86bjbtFucx9PwsgH2"
+      },
+      "-NY-yRJ1jnDsqVjNNSyR": {
+        "EndDate": "06/19/2023 00:00:00",
+        "EndPoint": "CDMX",
+        "Key": "-NY-yRJ1jnDsqVjNNSyR",
+        "Name": "david curiel",
+        "NumberPassengers": "8",
+        "PhoneNumber": "5583455452",
+        "PointOrigin": "Tula",
+        "Rounded": "No",
+        "StartDate": "06/17/2023 00:00:00",
+        "StartDateTime": "06:30:00",
+        "TotalPrice": "8000",
+        "UserId": "ft9TYsR6rUd86bjbtFucx9PwsgH2"
+      }
+    }
+  },
+  "RejectedTrips": {
+    "IPaWb9JYXOPMavwMWjXjCWOREkU2": {
+      "-NYPDh6AfkzG-ND9WBIc": {
+        "EndDate": "16/06/2023 0:23:16",
+        "EndPoint": "Cargil",
+        "Key": "-NYPDh6AfkzG-ND9WBIc",
+        "Name": "Israel el chido Curiel",
+        "NumberPassengers": "1",
+        "OptionQuote": "Transporte Ejecutivo",
+        "PhoneNumber": "5524936721",
+        "PointOrigin": "Tula centro",
+        "Rounded": "No",
+        "StartDate": "16/06/2023 0:23:16",
+        "StartDateTime": "06:30:00",
+        "TotalPrice": "6000",
+        "UserId": "IPaWb9JYXOPMavwMWjXjCWOREkU2"
+      },
+      "-NYPDjuj3bSX14knohZZ": {
+        "EndDate": "16/06/2023 0:23:16",
+        "EndPoint": "Cargil",
+        "Key": "-NYPDjuj3bSX14knohZZ",
+        "Name": "Israel el chido Curiel",
+        "NumberPassengers": "1",
+        "OptionQuote": "Transporte Ejecutivo",
+        "PhoneNumber": "5524936721",
+        "PointOrigin": "Tula centro",
+        "Rounded": "No",
+        "StartDate": "16/06/2023 0:23:16",
+        "StartDateTime": "06:30:00",
+        "TotalPrice": "6000",
+        "UserId": "IPaWb9JYXOPMavwMWjXjCWOREkU2"
+      }
+    }
+  },
+  "Users": {
+    "IPaWb9JYXOPMavwMWjXjCWOREkU2": {
+      "Email": "israel597@gmail.com",
+      "IdUser": "IPaWb9JYXOPMavwMWjXjCWOREkU2",
+      "LastName": "Curiel",
+      "Name": "Israel el chido",
+      "Password": "123456",
+      "PhoneNumber": "5524936721"
+    },
+    "N6S9Dh1BX7Qe4GEbs8AluIiFKiG3": {
+      "Email": "davidcuriel597@gmail.com",
+      "IdUser": "N6S9Dh1BX7Qe4GEbs8AluIiFKiG3",
+      "LastName": "Curiel Duran ",
+      "Name": "David Israel ",
+      "Password": "david597",
+      "PhoneNumber": "5583455452"
+    },
+    "ft9TYsR6rUd86bjbtFucx9PwsgH2": {
+      "Email": "david597@gmail.com",
+      "IdUser": "ft9TYsR6rUd86bjbtFucx9PwsgH2",
+      "LastName": "curiel",
+      "Name": "david",
+      "Password": "123456",
+      "PhoneNumber": "5583455452"
+    },
+    "rYzAjokoIrN87Q5nq5aYfmOwoTw1": {
+      "Email": "david597@hotmai.com",
+      "IdUser": "rYzAjokoIrN87Q5nq5aYfmOwoTw1",
+      "LastName": "Curiel",
+      "Name": "el chido",
+      "Password": "123456",
+      "PhoneNumber": "5521972354"
+    }
+  }
 }

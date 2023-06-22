@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="AppTripCliente.View.Home.TripDetailHome"
+             x:Class="AppTripCliente.View.Home.PendingDetailTrip"
              NavigationPage.HasNavigationBar="False"
              BackgroundColor="#455968">
     <Grid RowDefinitions="0.7*,0.6*,8.8*">
@@ -105,24 +105,18 @@
                                FontAttributes="Bold"
                                TextColor="Black"
                                HorizontalOptions="EndAndExpand" />
-                        <Label Text="{Binding Model.TotalPrice}"
+                        <Label Text="Pendiente"
                                TextColor="Black"
                                HorizontalOptions="End" />
                     </StackLayout>
                     <StackLayout Orientation="Horizontal"
                                  Grid.Row="10">
                         <Button HorizontalOptions="EndAndExpand"
-                                Text="Rechazar"
+                                Text="Cancelar"
                                 TextColor="White"
                                 CornerRadius="10"
                                 BackgroundColor="#C44B4B"
-                                Command="{Binding TripRejectedCommand}" />
-                        <Button HorizontalOptions="End"
-                                Text="Aceptar"
-                                TextColor="White"
-                                CornerRadius="10"
-                                BackgroundColor="#50964E"
-                                Command="{Binding TripConfirmCommand}" />
+                                Command="{Binding CancelledTripCommand}" />
                     </StackLayout>
                 </Grid>
             </Frame>

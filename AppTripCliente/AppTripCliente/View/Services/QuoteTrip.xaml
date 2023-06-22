@@ -210,7 +210,8 @@
                                                 Margin="-10,10,-10,0" 
                                                 TextColor="Black"
                                                 Visual="Material"
-                                                BackgroundColor="White"/>
+                                                BackgroundColor="White"
+                                                IsEnabled="{Binding EnablePicker}"/>
                                 </StackLayout>
                             </Frame>
                         </Grid>

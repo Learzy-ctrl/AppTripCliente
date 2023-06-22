@@ -75,5 +75,22 @@ namespace AppTripCliente.Data.Home
                 return false;
             }
         }
+
+        public async Task<bool> CancelledTrips(TripModel tripModel)
+        {
+            try
+            {
+                var userId = SecureStorage.GetAsync("UserID").Result;
+                await FirebaseConection.firebase.Child("OutstandingTravelFees").Child(userId).Child(tripModel.Key).DeleteAsync();
+                var response = await FirebaseConection.firebase.Child("CancelledTrips").Child(userId).PostAsync(tripModel);
+                tripModel.Key = response.Key;
+                await FirebaseConection.firebase.Child("CancelledTrips").Child(userId).Child(response.Key).PutAsync(tripModel);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
     }
 }

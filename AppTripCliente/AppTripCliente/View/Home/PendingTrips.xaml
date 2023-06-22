@@ -107,10 +107,16 @@
                                                     Text="Cancelar"
                                                     TextColor="White"
                                                     CornerRadius="25"
-                                                    BackgroundColor="#C44B4B" />
+                                                    BackgroundColor="#C44B4B"
+                                                    Command="{Binding Path=BindingContext.CancelledTripCommand, Source={x:Reference List}}"
+                                                    CommandParameter="{Binding .}" />
                                         </StackLayout>
                                     </Grid>
                                 </Frame>
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding Path=BindingContext.GoToTripDetailCommand, Source={x:Reference List}}"
+                                                          CommandParameter="{Binding .}" />
+                                </Frame.GestureRecognizers>
                             </Frame>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>

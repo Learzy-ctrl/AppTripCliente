@@ -50,8 +50,8 @@ namespace AppTripCliente.ViewModel.ServicesVIewModel
         string _name;
         string _phonenumber;
         string _feedback;
-        string _startDate;
-        string _endDate;
+        DateTime _startDate = DateTime.Now;
+        DateTime _endDate = DateTime.Now;
         TimeSpan _startdatetime;
         TimeSpan _backdatetime;
         string _rounded;
@@ -139,12 +139,12 @@ namespace AppTripCliente.ViewModel.ServicesVIewModel
             get { return _feedback; }
             set { SetValue(ref _feedback, value); }
         }
-        public string StartDate
+        public DateTime StartDate
         {
             get { return _startDate; }
             set { SetValue(ref _startDate, value); }
         }
-        public string EndDate
+        public DateTime EndDate
         {
             get { return _endDate; }
             set { SetValue(ref _endDate, value);}
@@ -190,7 +190,7 @@ namespace AppTripCliente.ViewModel.ServicesVIewModel
         public void WithAccount()
         {
             
-            Name = DataUser.Name + " " + DataUser.LastName;
+            Name = DataUser.Name + DataUser.LastName;
             PhoneNumber = DataUser.PhoneNumber;
             Enable = "False";
 
@@ -252,24 +252,6 @@ namespace AppTripCliente.ViewModel.ServicesVIewModel
                 await DisplayAlert("Alerta", "Ingresa tu numero celular", "OK");
                 return;
             }
-            if (string.IsNullOrEmpty(StartDate))
-            {
-                StartDate = DateTime.Now.ToString();
-            }
-            if (string.IsNullOrEmpty(EndDate))
-            {
-                EndDate = DateTime.Now.ToString();
-            }
-            if (StartDateTime.ToString() == "00:00:00")
-            {
-                await DisplayAlert("Alerta", "Indica la hora de inicio", "OK");
-                return;
-            }
-            if (BackDateTime.ToString() == "00:00:00" && IsCheckedNo == "False")
-            {
-                await DisplayAlert("Alerta", "Indica la hora de retorno", "OK");
-                return;
-            }
             if (string.IsNullOrEmpty(NumberPassengers))
             {
                 await DisplayAlert("Alerta", "Indica el numero de pasajeros", "OK");
@@ -284,7 +266,7 @@ namespace AppTripCliente.ViewModel.ServicesVIewModel
             {
                 UserDialogs.Instance.ShowLoading("Cargando");
                 TripModel tripModel = new TripModel();
-                if(IsCheckedYes == "True" && IsCheckedNo == "False")
+                if(IsCheckedYes == "True" && IsCheckedNo == "False" || IsCheckedNo == null)
                 {
                     Rounded = "Si";
                 }
@@ -297,12 +279,17 @@ namespace AppTripCliente.ViewModel.ServicesVIewModel
                 tripModel.Name = Name;
                 tripModel.PhoneNumber = PhoneNumber;
                 tripModel.FeedBack = FeedBack;
-                tripModel.StartDate = StartDate;
-                tripModel.EndDate = EndDate;
-                tripModel.StartDateTime = StartDateTime.ToString();
-                if(EnablePicker == "True")
+                tripModel.StartDate = StartDate.ToString("dd/MM/yyyy");
+                tripModel.StartDateTime = StartDateTime.Hours.ToString() + ":" + StartDateTime.Minutes.ToString();
+                if(EnablePicker == "True" || EnablePicker == null)
                 {
-                    tripModel.BackDateTime = BackDateTime.ToString();
+                    tripModel.BackDateTime = BackDateTime.Hours.ToString() + ":" + BackDateTime.Minutes.ToString();
+                    tripModel.EndDate = EndDate.ToString("dd/MM/yyyy");
+                }
+                else
+                {
+                    tripModel.BackDateTime = "Sin Retorno";
+                    tripModel.EndDate = "Sin Retorno";
                 }
                 tripModel.Rounded = Rounded;
                 tripModel.NumberPassengers = NumberPassengers;
@@ -322,6 +309,21 @@ namespace AppTripCliente.ViewModel.ServicesVIewModel
             else
             {
                 await DisplayAlert("Viaje retorno", "Selecciona solo una casilla", "OK");
+            }
+        }
+
+        public string ReformatDate(string date)
+        {
+            string dateStr = date;
+            DateTime newdate;
+            if (DateTime.TryParseExact(dateStr, "dd/MM/yyyy HHH:mm:ss", CultureInfo.InvariantCulture, DateTimeStyles.None, out newdate))
+            {
+                string reformatdate = newdate.ToString("dd/MM/yyyy");
+                return reformatdate;
+            }
+            else
+            {
+                return "";
             }
         }
         #endregion

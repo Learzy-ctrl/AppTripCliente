@@ -1,5 +1,7 @@
-﻿using AppTripCliente.Data.Home;
+﻿using Acr.UserDialogs;
+using AppTripCliente.Data.Home;
 using AppTripCliente.Model;
+using AppTripCliente.View.Home;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -69,14 +71,40 @@ namespace AppTripCliente.ViewModel.HomeViewModel
                 TextVisible = "True";
             }
         }
+        public async Task GoToTripDetail(TripModel tripModel)
+        {
+            await Navigation.PushModalAsync(new PendingDetailTrip(tripModel));
+        }
         public async Task GoBack()
         {
             await Navigation.PopModalAsync();
+        }
+
+        public async Task CancelledTrip(TripModel tripModel)
+        {
+            var confirm = await DisplayAlert("Cancelar", "¿Estas seguro de cancelar el viaje?", "Si", "No");
+            if (confirm)
+            {
+                UserDialogs.Instance.ShowLoading("Cargando");
+                await Task.Delay(500);
+                var isValid = await pending.CancelledTrips(tripModel);
+                UserDialogs.Instance.HideLoading();
+                if (isValid)
+                {
+                    await DisplayAlert("Exito", "Viaje cancelado", "OK");
+                }
+                else
+                {
+                    await DisplayAlert("Error", "Ocurrio un error, intenta de nuevo", "OK");
+                }
+            }
         }
         #endregion
 
         #region Commands
         public ICommand GoBackCommand => new Command(async () => await GoBack());
+        public ICommand GoToTripDetailCommand => new Command<TripModel>(async (m) => await GoToTripDetail(m));
+        public ICommand CancelledTripCommand => new Command<TripModel>(async (m) => await CancelledTrip(m));
         #endregion
     }
 }

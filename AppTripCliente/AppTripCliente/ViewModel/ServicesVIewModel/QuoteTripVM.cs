@@ -280,10 +280,10 @@ namespace AppTripCliente.ViewModel.ServicesVIewModel
                 tripModel.PhoneNumber = PhoneNumber;
                 tripModel.FeedBack = FeedBack;
                 tripModel.StartDate = StartDate.ToString("dd/MM/yyyy");
-                tripModel.StartDateTime = StartDateTime.Hours.ToString() + ":" + StartDateTime.Minutes.ToString();
+                tripModel.StartDateTime = StartDateTime.Hours.ToString() + ":" + TimeMinutes(StartDateTime);
                 if(EnablePicker == "True" || EnablePicker == null)
                 {
-                    tripModel.BackDateTime = BackDateTime.Hours.ToString() + ":" + BackDateTime.Minutes.ToString();
+                    tripModel.BackDateTime = BackDateTime.Hours.ToString() + ":" + TimeMinutes(BackDateTime);
                     tripModel.EndDate = EndDate.ToString("dd/MM/yyyy");
                 }
                 else
@@ -294,6 +294,7 @@ namespace AppTripCliente.ViewModel.ServicesVIewModel
                 tripModel.Rounded = Rounded;
                 tripModel.NumberPassengers = NumberPassengers;
                 tripModel.OptionQuote = OptionQuote;
+                tripModel.QuoteDateSent = DateTime.Now.ToString("dd/MM/yyyy");
                 var IsValid = await tripData.SendTripDataAsync(tripModel);
                 UserDialogs.Instance.HideLoading();
                 if (IsValid)
@@ -309,6 +310,19 @@ namespace AppTripCliente.ViewModel.ServicesVIewModel
             else
             {
                 await DisplayAlert("Viaje retorno", "Selecciona solo una casilla", "OK");
+            }
+        }
+
+        public string TimeMinutes(TimeSpan Minutes)
+        {
+            if(Minutes.Minutes < 10)
+            {
+                var strMinutes = "0" + Minutes.Minutes.ToString();
+                return strMinutes;
+            }
+            else
+            {
+                return Minutes.Minutes.ToString();
             }
         }
 

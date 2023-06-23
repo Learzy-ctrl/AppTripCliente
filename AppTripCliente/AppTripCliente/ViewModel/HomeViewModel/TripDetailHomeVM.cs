@@ -1,6 +1,7 @@
 ﻿using Acr.UserDialogs;
 using AppTripCliente.Data.Home;
 using AppTripCliente.Model;
+using System;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -16,15 +17,11 @@ namespace AppTripCliente.ViewModel.HomeViewModel
             Navigation = navigation;
             data = new TripData();
             Model = tripModel;
-            SetPropetyTrip();
         }
         #endregion
 
         #region Variables
         TripModel _model = new TripModel();
-        string _datereturn;
-        string _timereturn;
-        string _key;
         #endregion
 
         #region Objetcs
@@ -32,22 +29,6 @@ namespace AppTripCliente.ViewModel.HomeViewModel
         {
             get { return _model; }
             set { SetProperty(ref _model, value); }
-        }
-
-        public string DateReturn
-        {
-            get { return _datereturn; }
-            set { SetProperty(ref _datereturn, value); }
-        }
-        public string TimeReturn
-        {
-            get { return _timereturn; }
-            set { SetProperty(ref _timereturn, value); }
-        }
-        public string Key
-        {
-            get { return _key; }
-            set { SetProperty(ref _key, value); }
         }
         #endregion
 
@@ -58,32 +39,11 @@ namespace AppTripCliente.ViewModel.HomeViewModel
             Navigation.PopModalAsync();
         }
 
-        public void SetPropetyTrip()
-        {
-            if(Model.EndDate != null)
-            {
-                DateReturn = Model.EndDate;
-            }
-            else
-            {
-                DateReturn = "Sin retorno";
-            }
-
-            if (Model.BackDateTime != null)
-            {
-                TimeReturn = Model.BackDateTime;
-            }
-            else
-            {
-                TimeReturn = "Sin retorno";
-            }
-            Key = Model.Key;
-        }
-
         public async Task TripConfirm()
         {
             UserDialogs.Instance.ShowLoading("Cargando");
             await Task.Delay(500);
+            Model.QuoteDateConfirmed = DateTime.Now.ToString("dd/MM/yyyy");
             var IsValid = await data.SendConfirmTripAsync(Model);
             UserDialogs.Instance.HideLoading();
             if (IsValid)
@@ -104,6 +64,7 @@ namespace AppTripCliente.ViewModel.HomeViewModel
             {
                 UserDialogs.Instance.ShowLoading("Cargando");
                 await Task.Delay(500);
+                Model.QuoteDateRejected = DateTime.Now.ToString("dd/MM/yyyy");
                 var IsValid = await data.SendRejectionTripAsync(Model);
                 UserDialogs.Instance.HideLoading();
                 if (IsValid)

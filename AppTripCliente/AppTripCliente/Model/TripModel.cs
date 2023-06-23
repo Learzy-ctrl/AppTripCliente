@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 
 namespace AppTripCliente.Model
@@ -21,5 +22,9 @@ namespace AppTripCliente.Model
         public string NumberPassengers { get; set; }
         public string OptionQuote { get; set; }
         public string TotalPrice { get; set; }
+        public string QuoteDateSent { get; set; }
+        public string QuoteDateConfirmed { get; set; }
+        public string QuoteDateRejected { get; set; }
+        public string CancelledTravelDate { get; set; }
     }
 }

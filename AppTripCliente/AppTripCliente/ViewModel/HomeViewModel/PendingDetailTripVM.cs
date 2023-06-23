@@ -1,6 +1,7 @@
 ﻿using Acr.UserDialogs;
 using AppTripCliente.Data.Home;
 using AppTripCliente.Model;
+using System;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -45,6 +46,7 @@ namespace AppTripCliente.ViewModel.HomeViewModel
             {
                 UserDialogs.Instance.ShowLoading("Cargando");
                 await Task.Delay(500);
+                Model.CancelledTravelDate = DateTime.Now.ToString("dd/MM/yyyy");
                 var isValid = await data.CancelledTrips(Model);
                 UserDialogs.Instance.HideLoading();
                 if (isValid)

@@ -2,6 +2,7 @@
 using AppTripCliente.Data.Home;
 using AppTripCliente.Model;
 using AppTripCliente.View.Home;
+using System;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -87,6 +88,7 @@ namespace AppTripCliente.ViewModel.HomeViewModel
             {
                 UserDialogs.Instance.ShowLoading("Cargando");
                 await Task.Delay(500);
+                tripModel.CancelledTravelDate = DateTime.Now.ToString("dd/MM/yyyy");
                 var isValid = await pending.CancelledTrips(tripModel);
                 UserDialogs.Instance.HideLoading();
                 if (isValid)

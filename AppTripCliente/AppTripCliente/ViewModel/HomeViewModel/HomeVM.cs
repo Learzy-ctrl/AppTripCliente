@@ -29,7 +29,7 @@ namespace AppTripCliente.ViewModel.HomeViewModel
         #endregion
 
         #region Variables
-        ObservableCollection<TripModel> _triplist = new ObservableCollection<TripModel>();
+        ObservableCollection<TripModel> _triplist;
         string _isnull;
         #endregion
 
@@ -46,7 +46,10 @@ namespace AppTripCliente.ViewModel.HomeViewModel
 
         public async Task PrintAllTripQuote()
         {
-            TripList = await data.GetAllTripQuote();
+            if(TripList == null)
+            {
+                TripList = await data.GetAllTripQuote();
+            }
         }
 
         public async Task GoToQuoteTrip()
@@ -82,6 +85,7 @@ namespace AppTripCliente.ViewModel.HomeViewModel
         {
             UserDialogs.Instance.ShowLoading("Cargando");
             await Task.Delay(500);
+            Model.QuoteDateConfirmed = DateTime.Now.ToString("dd/MM/yyyy");
             var IsValid = await data.SendConfirmTripAsync(Model);
             UserDialogs.Instance.HideLoading();
             if (IsValid)
@@ -101,6 +105,7 @@ namespace AppTripCliente.ViewModel.HomeViewModel
             {
                 UserDialogs.Instance.ShowLoading("Cargando");
                 await Task.Delay(500);
+                Model.QuoteDateRejected = DateTime.Now.ToString("dd/MM/yyyy");
                 var IsValid = await data.SendRejectionTripAsync(Model);
                 UserDialogs.Instance.HideLoading();
                 if (IsValid)

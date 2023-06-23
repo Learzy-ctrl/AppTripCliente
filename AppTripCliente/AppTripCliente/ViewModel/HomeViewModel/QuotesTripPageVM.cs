@@ -2,6 +2,7 @@
 using AppTripCliente.Data.Home;
 using AppTripCliente.Model;
 using AppTripCliente.View.Home;
+using System;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -83,6 +84,7 @@ namespace AppTripCliente.ViewModel.HomeViewModel
         {
             UserDialogs.Instance.ShowLoading("Cargando");
             await Task.Delay(500);
+            Model.QuoteDateConfirmed = DateTime.Now.ToString("dd/MM/yyyy");
             var IsValid = await data.SendConfirmTripAsync(Model);
             UserDialogs.Instance.HideLoading();
             if (IsValid)
@@ -102,6 +104,7 @@ namespace AppTripCliente.ViewModel.HomeViewModel
             {
                 UserDialogs.Instance.ShowLoading("Cargando");
                 await Task.Delay(500);
+                Model.QuoteDateRejected = DateTime.Now.ToString("dd/MM/yyyy");
                 var IsValid = await data.SendRejectionTripAsync(Model);
                 UserDialogs.Instance.HideLoading();
                 if (IsValid)

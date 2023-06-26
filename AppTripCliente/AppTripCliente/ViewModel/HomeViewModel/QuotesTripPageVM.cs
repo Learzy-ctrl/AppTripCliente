@@ -85,6 +85,7 @@ namespace AppTripCliente.ViewModel.HomeViewModel
             UserDialogs.Instance.ShowLoading("Cargando");
             await Task.Delay(500);
             Model.QuoteDateConfirmed = DateTime.Now.ToString("dd/MM/yyyy");
+            Model.SecondOption = "false";
             var IsValid = await data.SendConfirmTripAsync(Model);
             UserDialogs.Instance.HideLoading();
             if (IsValid)
@@ -102,6 +103,18 @@ namespace AppTripCliente.ViewModel.HomeViewModel
             var Valid = await DisplayAlert("Rechazo", "¿Estas seguro?", "Si", "No");
             if (Valid)
             {
+                if (Model.SecondOption != "true")
+                {
+                    var SecondOption = await DisplayAlert("Rechazo", "¿Quieres que te demos otra opcion?", "Si", "No");
+                    if (SecondOption)
+                    {
+                        Model.SecondOption = "true";
+                    }
+                }
+                else
+                {
+                    Model.SecondOption = "false";
+                }
                 UserDialogs.Instance.ShowLoading("Cargando");
                 await Task.Delay(500);
                 Model.QuoteDateRejected = DateTime.Now.ToString("dd/MM/yyyy");

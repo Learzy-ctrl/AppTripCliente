@@ -20,24 +20,41 @@ namespace AppTripCliente.Data.Home
 
         public async Task<ObservableCollection<TripModel>> GetAllTripQuote()
         {
-            var userId = SecureStorage.GetAsync("UserID").Result;
-            var Data = await Task.Run(() => FirebaseConection.firebase.Child("QuotesMade").Child(userId).
-            AsObservable<TripModel>().AsObservableCollection());
-            return Data;
+            try
+            {
+                var userId = SecureStorage.GetAsync("UserID").Result;
+                var Data = await Task.Run(() => FirebaseConection.firebase.Child("QuotesMade").Child(userId).
+                AsObservable<TripModel>().AsObservableCollection());
+                return Data;
+            }
+            catch
+            {
+                return null;
+            }
+            
         }
 
         public async Task<int> CountQuotes()
         {
-            var userId = SecureStorage.GetAsync("UserID").Result;
-            var data = await FirebaseConection.firebase.Child("QuotesMade").Child(userId).OnceAsync<TripModel>();
-            return data.Count;
+            try
+            {
+                var userId = SecureStorage.GetAsync("UserID").Result;
+                var data = await FirebaseConection.firebase.Child("QuotesMade").Child(userId).OnceAsync<TripModel>();
+                return data.Count;
+            }
+            catch
+            {
+                return 0;
+            }
+            
         }
 
         public async Task<int> CountPendingTripAsync()
         {
-            var userId = SecureStorage.GetAsync("UserID").Result;
-            var data = await FirebaseConection.firebase.Child("OutstandingTravelFees").Child(userId).OnceAsync<TripModel>();
-            return data.Count;
+                var userId = SecureStorage.GetAsync("UserID").Result;
+                var data = await FirebaseConection.firebase.Child("OutstandingTravelFees").Child(userId).OnceAsync<TripModel>();
+                return data.Count;
+            
         }
 
         public async Task<bool> SendConfirmTripAsync(TripModel tripModel)

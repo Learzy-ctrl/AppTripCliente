@@ -1,7 +1,9 @@
 ﻿using AppTripCliente.View;
+using AppTripCliente.View.History;
 using AppTripCliente.View.Home;
 using AppTripCliente.View.Login;
 using AppTripCliente.View.Services;
+using AppTripCliente.ViewModel;
 using System;
 using Xamarin.Essentials;
 using Xamarin.Forms;
@@ -12,8 +14,8 @@ namespace AppTripCliente
     {
         public App()
         {
-            var userID = SecureStorage.GetAsync("UserID").Result;
             InitializeComponent();
+            var userID = SecureStorage.GetAsync("UserID").Result;
             if (!string.IsNullOrEmpty(userID))
             {
                 MainPage = new TabbedPageContainer();

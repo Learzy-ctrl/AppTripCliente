@@ -13,8 +13,5 @@ namespace AppTripCliente.View
             On<Android>().SetToolbarPlacement(ToolbarPlacement.Bottom);
             On<Android>().SetIsSmoothScrollEnabled(true);
         }
-
-
-
     }
 }

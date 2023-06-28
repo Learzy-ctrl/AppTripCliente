@@ -19,5 +19,5 @@
     <History:History Title="Historial"
                   IconImageSource="history" />
     <Account:Account Title="Cuenta"
-                  IconImageSource="useric" />
+                     IconImageSource="useric" />
 </TabbedPage>

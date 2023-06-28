@@ -101,21 +101,12 @@ namespace AppTripCliente.ViewModel.AccountViewModel
 
         public async void PrintUserData()
         {
-            try
-            {
                 var User = await Data.GetUser();
                 NameAndLastName = User.Name + " " + User.LastName;
                 Email = User.Email;
                 PhoneNumber = User.PhoneNumber;
                 Password = User.Password;
                 UserID = User.IdUser;
-            }
-            catch (Exception e)
-            {
-                await SecureStorage.SetAsync("UserID", "");
-                Application.Current.MainPage = new NavigationPage(new Login());
-            }
-                
         }
 
         public async Task DeleteAccount()

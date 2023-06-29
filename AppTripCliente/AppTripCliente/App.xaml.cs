@@ -4,6 +4,7 @@ using AppTripCliente.View.Home;
 using AppTripCliente.View.Login;
 using AppTripCliente.View.Services;
 using AppTripCliente.ViewModel;
+using Plugin.FirebasePushNotification;
 using System;
 using Xamarin.Essentials;
 using Xamarin.Forms;
@@ -24,6 +25,12 @@ namespace AppTripCliente
             {
                 MainPage = new NavigationPage(new Login());
             }
+            CrossFirebasePushNotification.Current.OnTokenRefresh += Current_OnTokenRefresh;
+        }
+
+        private void Current_OnTokenRefresh(object source, FirebasePushNotificationTokenEventArgs e)
+        {
+            SecureStorage.SetAsync("IdDevice", e.Token);
         }
 
         protected override void OnStart()

@@ -27,5 +27,6 @@ namespace AppTripCliente.Model
         public string QuoteDateRejected { get; set; }
         public string CancelledTravelDate { get; set; }
         public string SecondOption { get; set; }
+        public string IdDevice { get; set; }
     }
 }

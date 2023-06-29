@@ -2,13 +2,8 @@
 using AppTripCliente.Data.Account;
 using AppTripCliente.Data.Services;
 using AppTripCliente.Model;
-using AppTripCliente.View.Home;
-using AppTripCliente.View.Login;
 using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Runtime.CompilerServices;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Essentials;
@@ -295,6 +290,7 @@ namespace AppTripCliente.ViewModel.ServicesVIewModel
                 tripModel.NumberPassengers = NumberPassengers;
                 tripModel.OptionQuote = OptionQuote;
                 tripModel.QuoteDateSent = DateTime.Now.ToString("dd/MM/yyyy");
+                tripModel.IdDevice = await SecureStorage.GetAsync("IdDevice");
                 var IsValid = await tripData.SendTripDataAsync(tripModel);
                 UserDialogs.Instance.HideLoading();
                 if (IsValid)

@@ -25,7 +25,6 @@ namespace AppTripCliente.ViewModel.HomeViewModel
 
         #region Variables
         ObservableCollection<TripModel> _triplist;
-        string _isnull;
         #endregion
 
         #region Objetcs

@@ -18,7 +18,7 @@ namespace AppTripCliente.Data.Account
                 var userID = SecureStorage.GetAsync("UserID").Result;
                 var User = await FirebaseConection.firebase.Child("Users").Child(userID).OnceSingleAsync<User>();
                 return User;
-            }catch(Exception e)
+            }catch
             {
                 return null;
             }
@@ -27,6 +27,7 @@ namespace AppTripCliente.Data.Account
 
         public async Task InsertUser(User user)
         {
+
             await FirebaseConection.firebase.Child("Users").PostAsync(user);
         }
         public async Task<bool> DeleteAccountUser(string userId)

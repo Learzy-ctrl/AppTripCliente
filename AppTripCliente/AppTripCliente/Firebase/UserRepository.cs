@@ -26,7 +26,6 @@ namespace AppTripCliente.Firebase
             {
                 return "";
             }
-
         }
 
         public async Task<string>SignIn(string email, string password)
@@ -71,7 +70,6 @@ namespace AppTripCliente.Firebase
             {
                 return false;
             }
-            
         }
 
         public async Task<bool> ChangePassword(string NewPassword, string Email, string OldPassword)

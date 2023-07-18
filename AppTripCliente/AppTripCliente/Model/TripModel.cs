@@ -28,5 +28,6 @@ namespace AppTripCliente.Model
         public string CancelledTravelDate { get; set; }
         public string SecondOption { get; set; }
         public string IdDevice { get; set; }
+        public string ConfirmedChecked { get; set; }
     }
 }

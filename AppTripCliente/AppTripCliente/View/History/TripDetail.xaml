@@ -81,32 +81,23 @@
                            TextColor="Black"
                            Grid.Row="5"
                            HorizontalOptions="EndAndExpand" />
-                    <Label Text="Vehiculo:"
+                    <Label Text="Fecha regreso:"
                            FontAttributes="Bold"
                            TextColor="Black"
                            Grid.Row="6"
                            HorizontalOptions="StartAndExpand" />
-                    <Label Text="---------------"
+                    <Label Text="{Binding Model.EndDate}"
                            TextColor="Black"
                            Grid.Row="6"
                            HorizontalOptions="EndAndExpand" />
-                    <Label Text="Operador asignado:"
+                    <Label Text="Hora Regreso"
                            FontAttributes="Bold"
                            TextColor="Black"
                            Grid.Row="7"
                            HorizontalOptions="StartAndExpand" />
-                    <Label Text="---------------"
+                    <Label Text="{Binding Model.BackDateTime}"
                            TextColor="Black"
                            Grid.Row="7"
-                           HorizontalOptions="EndAndExpand" />
-                    <Label Text="Comentarios:"
-                           FontAttributes="Bold"
-                           TextColor="Black"
-                           Grid.Row="8"
-                           HorizontalOptions="StartAndExpand" />
-                    <Label Text="{Binding Model.FeedBack}"
-                           TextColor="Black"
-                           Grid.Row="8"
                            HorizontalOptions="EndAndExpand" />
                     <StackLayout Orientation="Horizontal" 
                                  Grid.Row="9">
@@ -123,7 +114,8 @@
                             Text="Eliminar viaje"
                             TextColor="White"
                             CornerRadius="10"
-                            BackgroundColor="#C44B4B"/>
+                            BackgroundColor="#C44B4B"
+                            Command="{Binding DeleteTripHistoryCommand}"/>
                 </Grid>
             </Frame>
         </Frame>

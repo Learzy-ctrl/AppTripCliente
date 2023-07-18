@@ -16,7 +16,6 @@ namespace AppTripCliente.View.History
         public WithHistory()
         {
             InitializeComponent();
-            BindingContext = new WithHistoryVM(Navigation);
         }
     }
 }

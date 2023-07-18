@@ -11,51 +11,64 @@
                    Margin="15"/>
         </Grid>
         <Grid Grid.Row="1">
-            <Grid RowDefinitions="2*,2*,2*,2*,2*">
-                <Frame BackgroundColor="#F0F0F0"
-                       HorizontalOptions="CenterAndExpand"
-                       VerticalOptions="CenterAndExpand"
-                       CornerRadius="15">
-                    <Frame CornerRadius="15"
-                           Margin="-10">
-                        <Grid RowDefinitions="5*,5*">
-                            <StackLayout Orientation="Horizontal"
-                                         Grid.Row="0">
-                                <Label Text="Viaje a: "
-                                       TextColor="Black"
-                                       FontAttributes="Bold" />
-                                <Label Text="Punto Destino asignada"
-                                       TextColor="Black"
-                                       FontAttributes="Bold" />
-                            </StackLayout>
-                            <Grid ColumnDefinitions="2*,4*,3*"
-                                  Grid.Row="1">
-                                <StackLayout Grid.Column="1"
-                                             Orientation="Horizontal">
-                                    <Label Text="Fecha"
-                                           TextColor="Black"
-                                           FontAttributes="Bold" />
-                                    <Label Text="dd/mm/aaaa"
-                                           TextColor="Black"
-                                           FontAttributes="Bold" />
-                                </StackLayout>
-                                <StackLayout Grid.Column="2"
-                                             Orientation="Horizontal">
-                                    <Label Text="Hora"
-                                           TextColor="Black"
-                                           FontAttributes="Bold" />
-                                    <Label Text="HH:mm"
-                                           TextColor="Black"
-                                           FontAttributes="Bold" />
-                                </StackLayout>
-                            </Grid>
-                        </Grid>
-                    </Frame>
-                    <Frame.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding GoToTripDetailCommand}"/>
-                    </Frame.GestureRecognizers>
-                </Frame>
-            </Grid>
+            <RefreshView IsRefreshing="{Binding isRefreshing}"
+                         Command="{Binding RefreshingViewCommand}">
+                <CollectionView ItemsSource="{Binding HistoryList}"
+                                x:Name="list">
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Orientation="Vertical"
+                                         VerticalItemSpacing="15" />
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame BackgroundColor="#F0F0F0"
+                                   HorizontalOptions="CenterAndExpand"
+                                   VerticalOptions="CenterAndExpand"
+                                   CornerRadius="15">
+                                <Frame CornerRadius="15"
+                                       Margin="-10">
+                                    <Grid RowDefinitions="5*,5*">
+                                        <StackLayout Orientation="Horizontal"
+                                                     Grid.Row="0">
+                                            <Label Text="Viaje a: "
+                                                   TextColor="Black"
+                                                   FontAttributes="Bold" />
+                                            <Label Text="{Binding EndPoint}"
+                                                   TextColor="Black"
+                                                   FontAttributes="Bold" />
+                                        </StackLayout>
+                                        <Grid ColumnDefinitions="2*,4*,3*"
+                                              Grid.Row="1">
+                                            <StackLayout Grid.Column="1"
+                                                         Orientation="Horizontal">
+                                                <Label Text="Fecha"
+                                                       TextColor="Black"
+                                                       FontAttributes="Bold" />
+                                                <Label Text="{Binding StartDate}"
+                                                       TextColor="Black"
+                                                       FontAttributes="Bold" />
+                                            </StackLayout>
+                                            <StackLayout Grid.Column="2"
+                                                         Orientation="Horizontal">
+                                                <Label Text="Hora"
+                                                       TextColor="Black"
+                                                       FontAttributes="Bold" />
+                                                <Label Text="{Binding StartDateTime}"
+                                                       TextColor="Black"
+                                                       FontAttributes="Bold" />
+                                            </StackLayout>
+                                        </Grid>
+                                    </Grid>
+                                </Frame>
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding Path=BindingContext.GoToTripDetailCommand, Source={x:Reference list}}"
+                                                          CommandParameter="{Binding .}" />
+                                </Frame.GestureRecognizers>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </RefreshView>
         </Grid>
     </Grid>
 </ContentView>

@@ -185,7 +185,7 @@ namespace AppTripCliente.ViewModel.ServicesVIewModel
         public void WithAccount()
         {
             
-            Name = DataUser.Name + DataUser.LastName;
+            Name = DataUser.Name + " " +DataUser.LastName;
             PhoneNumber = DataUser.PhoneNumber;
             Enable = "False";
 
@@ -291,6 +291,7 @@ namespace AppTripCliente.ViewModel.ServicesVIewModel
                 tripModel.OptionQuote = OptionQuote;
                 tripModel.QuoteDateSent = DateTime.Now.ToString("dd/MM/yyyy");
                 tripModel.IdDevice = await SecureStorage.GetAsync("IdDevice");
+                tripModel.ConfirmedChecked = "false";
                 var IsValid = await tripData.SendTripDataAsync(tripModel);
                 UserDialogs.Instance.HideLoading();
                 if (IsValid)

@@ -1,4 +1,5 @@
 ﻿using AppTripCliente.View.Account;
+using AppTripCliente.ViewModel.HistoryViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +17,19 @@ namespace AppTripCliente.View.History
 		public History ()
 		{
 			InitializeComponent ();
-			jijiji.Content = new WithHistory();
+			BindingContext = new HistoryVM(Navigation, this);
+		}
+
+		public void ChangeView(bool flag)
+		{
+			if (flag)
+			{
+				jijiji.Content = new WithHistory();
+			}
+			else
+			{
+				jijiji.Content = new WithoutHistory();
+			}
 		}
 	}
 }

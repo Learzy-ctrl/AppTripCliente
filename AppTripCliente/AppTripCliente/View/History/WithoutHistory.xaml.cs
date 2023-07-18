@@ -13,10 +13,10 @@ namespace AppTripCliente.View.History
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class WithoutHistory : ContentView
 	{
+
 		public WithoutHistory ()
 		{
 			InitializeComponent ();
-			BindingContext = new WithoutHistoryVM(Navigation);
 		}
 	}
 }

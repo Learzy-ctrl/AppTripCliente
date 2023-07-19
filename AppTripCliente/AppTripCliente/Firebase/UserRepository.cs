@@ -44,12 +44,14 @@ namespace AppTripCliente.Firebase
             
         }
 
-        public async Task<bool> DeleteUser(string email, string password)
-        {
-            var token = await authProvider.SignInWithEmailAndPasswordAsync(email, password);
-            try
+        public async Task<bool> DeleteUser()
+        { try
             {
+                var email = SecureStorage.GetAsync("EmailUser").Result;
+                var password = SecureStorage.GetAsync("Password").Result;
+                var token = await authProvider.SignInWithEmailAndPasswordAsync(email, password);
                 await authProvider.DeleteUserAsync(token.FirebaseToken);
+                await SecureStorage.SetAsync("Token", token.FirebaseToken);
                 return true;
             }
             catch

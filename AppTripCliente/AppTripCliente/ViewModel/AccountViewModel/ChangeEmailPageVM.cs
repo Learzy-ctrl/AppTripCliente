@@ -75,27 +75,34 @@ namespace AppTripCliente.ViewModel.AccountViewModel
         {
             UserDialogs.Instance.ShowLoading("Cargando");
             var User = await data.GetUser();
-            if (Password == User.Password)
+            if(User != null)
             {
-                var IsValid = await repository.ChangeEmail(Email, User.Email, User.Password);
-                UserDialogs.Instance.HideLoading();
-                if (IsValid)
+                if (Password == User.Password)
                 {
-                    await data.PutEmail(User, Email);
-                    await DisplayAlert("Exito", "Se ha cambiado tu correo correctamnte", "OK");
-                    Application.Current.MainPage = new TabbedPageContainer();
+                    var IsValid = await repository.ChangeEmail(Email, User.Email, User.Password);
+                    UserDialogs.Instance.HideLoading();
+                    if (IsValid)
+                    {
+                        await data.PutEmail(User, Email);
+                        await DisplayAlert("Exito", "Se ha cambiado tu correo correctamnte", "OK");
+                        Application.Current.MainPage = new TabbedPageContainer();
+                    }
+                    else
+                    {
+                        await DisplayAlert("Error", "Ocurrio un error al cambiar el correo", "OK");
+                    }
                 }
                 else
                 {
-                    await DisplayAlert("Error", "Ocurrio un error al cambiar el correo", "OK");
+                    UserDialogs.Instance.HideLoading();
+                    await DisplayAlert("Error", "La contraseña es incorrecta", "OK");
                 }
             }
             else
             {
                 UserDialogs.Instance.HideLoading();
-                await DisplayAlert("Error", "La contraseña es incorrecta", "OK");
+                await DisplayAlert("Error", "Conectate a internet", "OK");
             }
-
         }
 
         public async Task GoBack()

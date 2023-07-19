@@ -10,6 +10,7 @@ using AppTripCliente.View.Account;
 using AppTripCliente.Data.Account;
 using AppTripCliente.Model;
 using Acr.UserDialogs;
+using Firebase.Auth;
 
 namespace AppTripCliente.ViewModel.AccountViewModel
 {
@@ -17,10 +18,11 @@ namespace AppTripCliente.ViewModel.AccountViewModel
     {
         private readonly AccountData data = null;
         #region Constructor
-        public EditAccountVM(INavigation navigation)
+        public EditAccountVM(INavigation navigation, Model.User model)
         {
             Navigation = navigation;
             data = new AccountData();
+            user = model;
             PrintUserData();
         }
         #endregion
@@ -29,6 +31,7 @@ namespace AppTripCliente.ViewModel.AccountViewModel
         string _name;
         string _lastname;
         string _phonenumber;
+        Model.User user;
         #endregion
 
         #region Objetcs
@@ -65,9 +68,8 @@ namespace AppTripCliente.ViewModel.AccountViewModel
             await Navigation.PushModalAsync(new ChangePasswordPage());
         }
 
-        public async void PrintUserData()
+        public  void PrintUserData()
         {
-            var user = await data.GetUser();
             Name = user.Name;
             LastName = user.LastName;
             PhoneNumber = user.PhoneNumber;
@@ -76,7 +78,6 @@ namespace AppTripCliente.ViewModel.AccountViewModel
         public async Task PutUserData()
         {
             UserDialogs.Instance.ShowLoading("Cargando");
-            var user = await data.GetUser();
             user.Name = Name;
             user.LastName = LastName;
             user.PhoneNumber = PhoneNumber;

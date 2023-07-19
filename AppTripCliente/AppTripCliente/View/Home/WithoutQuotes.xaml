@@ -1,13 +1,15 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppTripCliente.View.Home.WithoutQuotes">
-    <Button  Text="Ver Cotizaciones Realizadas"
-             TextColor="White"
-             BackgroundColor="#455968"
-             VerticalOptions="CenterAndExpand"
-             HorizontalOptions="CenterAndExpand"
-             Padding="25"
-             CornerRadius="25"
-             Command="{Binding GoToWithQuotesTripPageCommand}"/>
+    <RefreshView IsRefreshing="{Binding isRefreshing}"
+                 Command="{Binding RefreshPageCommand}">
+        <ScrollView>
+            <Label Text="No tienes cotizaciones, arrastra para actualizar"
+                   VerticalOptions="CenterAndExpand"
+                   HorizontalOptions="CenterAndExpand" />
+        </ScrollView>
+    </RefreshView>
+    
+    
 </ContentView>

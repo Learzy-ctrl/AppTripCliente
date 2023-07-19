@@ -14,10 +14,10 @@ namespace AppTripCliente.View.Home
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class TripDetailHome : ContentPage
     {
-        public TripDetailHome(TripModel tripModel)
+        public TripDetailHome(TripModel tripModel, HomeVM page)
         {
             InitializeComponent();
-            BindingContext = new TripDetailHomeVM(Navigation, tripModel);
+            BindingContext = new TripDetailHomeVM(Navigation, tripModel, page);
         }
     }
 }

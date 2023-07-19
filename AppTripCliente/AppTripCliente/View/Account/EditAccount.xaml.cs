@@ -1,4 +1,5 @@
-﻿using AppTripCliente.ViewModel.AccountViewModel;
+﻿using AppTripCliente.Model;
+using AppTripCliente.ViewModel.AccountViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,10 +14,10 @@ namespace AppTripCliente.View.Account
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class EditAccount : ContentPage
 	{
-		public EditAccount ()
+		public EditAccount (User model)
 		{
 			InitializeComponent ();
-			BindingContext = new EditAccountVM(Navigation);
+			BindingContext = new EditAccountVM(Navigation, model);
 		}
 	}
 }

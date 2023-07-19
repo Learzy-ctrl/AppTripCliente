@@ -2,6 +2,7 @@
 using AppTripCliente.Model;
 using Firebase.Database;
 using Firebase.Database.Query;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
@@ -18,14 +19,18 @@ namespace AppTripCliente.Data.Home
             return Data;    
         }
 
-        public async Task<ObservableCollection<TripModel>> GetAllTripQuote()
+        public async Task<List<TripModel>> GetAllTripQuote()
         {
             try
             {
+                var list = new List<TripModel>();
                 var userId = SecureStorage.GetAsync("UserID").Result;
-                var Data = await Task.Run(() => FirebaseConection.firebase.Child("QuotesMade").Child(userId).
-                AsObservable<TripModel>().AsObservableCollection());
-                return Data;
+                var Data = await FirebaseConection.firebase.Child("QuotesMade").Child(userId).OnceAsync<TripModel>();
+                foreach(var d in Data)
+                {
+                    list.Add(d.Object);
+                }
+                return list;
             }
             catch
             {

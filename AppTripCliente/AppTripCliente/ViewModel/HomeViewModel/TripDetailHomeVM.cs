@@ -12,16 +12,18 @@ namespace AppTripCliente.ViewModel.HomeViewModel
     {
         private readonly TripData data = null;
         #region Constructor
-        public TripDetailHomeVM(INavigation navigation, TripModel tripModel)
+        public TripDetailHomeVM(INavigation navigation, TripModel tripModel, HomeVM page)
         {
             Navigation = navigation;
             data = new TripData();
             Model = tripModel;
+            Hpage = page;
         }
         #endregion
 
         #region Variables
         TripModel _model = new TripModel();
+        HomeVM Hpage;
         #endregion
 
         #region Objetcs
@@ -49,6 +51,7 @@ namespace AppTripCliente.ViewModel.HomeViewModel
             UserDialogs.Instance.HideLoading();
             if (IsValid)
             {
+                await Hpage.RefreshPage();
                 await DisplayAlert("Exito", "Se ha confirmado tu viaje, en breve nos pondremos en contacto contigo", "ok");
                 await Navigation.PopModalAsync();
             }
@@ -82,6 +85,7 @@ namespace AppTripCliente.ViewModel.HomeViewModel
                 UserDialogs.Instance.HideLoading();
                 if (IsValid)
                 {
+                    await Hpage.RefreshPage();
                     await DisplayAlert("Exito", "Viaje rechazado", "ok");
                     await Navigation.PopModalAsync();
                 }

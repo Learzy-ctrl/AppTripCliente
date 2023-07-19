@@ -13,21 +13,19 @@ namespace AppTripCliente.View.Home
 		{
 			InitializeComponent();
 			data = new TripData();
-			BindingContext = new HomeVM(Navigation);
-			changeContentView();
+			BindingContext = new HomeVM(Navigation, this);
 		}
 
-		public async void changeContentView()
+		public void ChangePage(bool flag)
 		{
-			var QuotesNumber = await data.CountQuotes();
-			if (QuotesNumber > 0)
+			if (flag)
 			{
-				QuotesView.Content = new WithQuotes();
+                QuotesView.Content = new WithQuotes();
 			}
 			else
 			{
-				QuotesView.Content = new WithoutQuotes();
-			}
+                QuotesView.Content = new WithoutQuotes();
+            }
 		}
     }
 }

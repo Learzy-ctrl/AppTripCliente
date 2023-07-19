@@ -131,43 +131,52 @@ namespace AppTripCliente.ViewModel.AccountViewModel
         {
             UserDialogs.Instance.ShowLoading("Cargando");
             var user = await data.GetUser();
-            if(OldPassword == user.Password)
+            if(user != null)
             {
-                if(NewPassword.Count() >= 6)
+                if (OldPassword == user.Password)
                 {
-                    if (NewPassword == ConfirmPassword)
+                    if (NewPassword.Count() >= 6)
                     {
-                        var IsValid = await repository.ChangePassword(NewPassword, user.Email, OldPassword);
-                        if (IsValid)
+                        if (NewPassword == ConfirmPassword)
                         {
-                            await data.PutPassword(user, NewPassword);
-                            UserDialogs.Instance.HideLoading();
-                            await DisplayAlert("Exito", "La contraseña se actualizo correctamente", "OK");
-                            await Navigation.PopModalAsync();
+                            var IsValid = await repository.ChangePassword(NewPassword, user.Email, OldPassword);
+                            if (IsValid)
+                            {
+                                await data.PutPassword(user, NewPassword);
+                                UserDialogs.Instance.HideLoading();
+                                await DisplayAlert("Exito", "La contraseña se actualizo correctamente", "OK");
+                                await Navigation.PopModalAsync();
+                            }
+                            else
+                            {
+                                UserDialogs.Instance.HideLoading();
+                                await DisplayAlert("Error", "Ocurrio un error al actualizar la contraseña", "OK");
+                            }
                         }
                         else
                         {
                             UserDialogs.Instance.HideLoading();
-                            await DisplayAlert("Error", "Ocurrio un error al actualizar la contraseña", "OK");
+                            await DisplayAlert("Alerta", "La contraseña no coincide con la confirmacion", "OK");
                         }
                     }
                     else
                     {
                         UserDialogs.Instance.HideLoading();
-                        await DisplayAlert("Alerta", "La contraseña no coincide con la confirmacion", "OK");
+                        await DisplayAlert("Error", "La contraseña debe tener minimo 6 Caracteres", "OK");
                     }
                 }
                 else
                 {
                     UserDialogs.Instance.HideLoading();
-                    await DisplayAlert("Error", "La contraseña debe tener minimo 6 Caracteres", "OK");
+                    await DisplayAlert("Error", "Contraseña Incorrecta", "OK");
                 }
             }
             else
             {
                 UserDialogs.Instance.HideLoading();
-                await DisplayAlert("Error", "Contraseña Incorrecta", "OK");
+                await DisplayAlert("Error", "Conectate a internet", "OK");
             }
+            
         }
 
         public async Task GoBack()

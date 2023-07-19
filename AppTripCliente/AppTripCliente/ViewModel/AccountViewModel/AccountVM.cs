@@ -80,8 +80,16 @@ namespace AppTripCliente.ViewModel.AccountViewModel
         {
             UserDialogs.Instance.ShowLoading("Cargando");
 
-            await Task.Delay(2000);
-            await Navigation.PushModalAsync(new EditAccount());
+            await Task.Delay(500);
+            var user = await Data.GetUser();
+            if (user != null)
+            {
+                await Navigation.PushModalAsync(new EditAccount(user));
+            }
+            else
+            {
+                await DisplayAlert("Error", "Conectate a internet", "ok");
+            }
             UserDialogs.Instance.HideLoading();
         }
 
@@ -94,6 +102,10 @@ namespace AppTripCliente.ViewModel.AccountViewModel
             {
                 UserDialogs.Instance.ShowLoading("Cerrando Sesion");
                 await SecureStorage.SetAsync("UserID", "");
+                await SecureStorage.SetAsync("NameUser", "null");
+                await SecureStorage.SetAsync("EmailUser", "");
+                await SecureStorage.SetAsync("PhoneUser", "");
+                await SecureStorage.SetAsync("Password", "");
                 Application.Current.MainPage = new NavigationPage(new Login());
                 UserDialogs.Instance.HideLoading();
             }
@@ -101,12 +113,27 @@ namespace AppTripCliente.ViewModel.AccountViewModel
 
         public async void PrintUserData()
         {
-                var User = await Data.GetUser();
-                NameAndLastName = User.Name + " " + User.LastName;
+            var User = await Data.GetUser();
+            var name = SecureStorage.GetAsync("NameUser").Result;
+            if (string.IsNullOrEmpty(name) || name == "null")
+            {
+                var username = User.Name + " " + User.LastName;
+                await SecureStorage.SetAsync("NameUser", username);
+                await SecureStorage.SetAsync("EmailUser", User.Email);
+                await SecureStorage.SetAsync("PhoneUser", User.PhoneNumber);
+                await SecureStorage.SetAsync("Password", User.Password);
+                NameAndLastName = User.Name + " " + User.LastName; ;
                 Email = User.Email;
                 PhoneNumber = User.PhoneNumber;
-                Password = User.Password;
-                UserID = User.IdUser;
+            }
+            else
+            {
+                var email = SecureStorage.GetAsync("EmailUser").Result;
+                var phone = SecureStorage.GetAsync("PhoneUser").Result;
+                NameAndLastName = name;
+                Email = email;
+                PhoneNumber = phone;
+            }
         }
 
         public async Task DeleteAccount()
@@ -116,10 +143,10 @@ namespace AppTripCliente.ViewModel.AccountViewModel
             if (IsValid)
             {
                 UserDialogs.Instance.ShowLoading("Eliminando cuenta");
-                var ValidAccount = await user.DeleteUser(Email, Password);
+                var ValidAccount = await user.DeleteUser();
                 if (ValidAccount)
                 {
-                    var ValidData = await Data.DeleteAccountUser(UserID);
+                    var ValidData = await Data.DeleteAccountUser();
                     if (ValidData)
                     {
                         await Task.Delay(2500);
@@ -127,6 +154,10 @@ namespace AppTripCliente.ViewModel.AccountViewModel
                         await DisplayAlert("Exito", "Se ha eliminado la cuenta", "ok");
 
                         await SecureStorage.SetAsync("UserID", "");
+                        await SecureStorage.SetAsync("NameUser", "null");
+                        await SecureStorage.SetAsync("EmailUser", "");
+                        await SecureStorage.SetAsync("PhoneUser", "");
+                        await SecureStorage.SetAsync("Password", "");
                         Application.Current.MainPage = new NavigationPage(new Login());
                     }
                     else

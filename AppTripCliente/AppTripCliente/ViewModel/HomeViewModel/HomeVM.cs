@@ -4,6 +4,7 @@ using AppTripCliente.Model;
 using AppTripCliente.View.Home;
 using AppTripCliente.View.Services;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -15,36 +16,36 @@ namespace AppTripCliente.ViewModel.HomeViewModel
     {
         private readonly TripData data = null;
         #region Constructor
-        public HomeVM(INavigation navigation)
+        public HomeVM(INavigation navigation, Home page)
         {
             Navigation = navigation;
             data = new TripData();
-            PrintAllTripQuote();
+            Hpage = page;
+            RefreshPage();
         }
         #endregion
 
         #region Variables
-        ObservableCollection<TripModel> _triplist;
+        List<TripModel> _triplist;
+        bool _isrefreshing;
+        Home Hpage;
         #endregion
 
         #region Objetcs
-        public ObservableCollection<TripModel> TripList
+        public List<TripModel> TripList
         {
             get { return _triplist; }
-            set { SetValue(ref _triplist, value);
-                OnPropertyChanged();}
+            set { SetValue(ref _triplist, value);}
+        }
+
+        public bool isRefreshing
+        {
+            get { return _isrefreshing; }
+            set { SetValue(ref _isrefreshing, value); }
         }
         #endregion
 
         #region Processes
-
-        public async Task PrintAllTripQuote()
-        {
-            if(TripList == null)
-            {
-                TripList = await data.GetAllTripQuote();
-            }
-        }
 
         public async Task GoToQuoteTrip()
         {
@@ -62,17 +63,9 @@ namespace AppTripCliente.ViewModel.HomeViewModel
             UserDialogs.Instance.HideLoading();
         }
 
-        public async Task GoToWithQuotesTripPage()
-        {
-            UserDialogs.Instance.ShowLoading("Cargando");
-            await Task.Delay(500);
-            await Navigation.PushModalAsync(new View.Home.QuotesTripPage());
-            UserDialogs.Instance.HideLoading();
-        }
-
         public async Task GoToTripDetail(TripModel tripModel)
         {
-            await Navigation.PushModalAsync(new TripDetailHome(tripModel));
+            await Navigation.PushModalAsync(new TripDetailHome(tripModel, this));
         }
 
         public async Task TripConfirm(TripModel Model)
@@ -85,6 +78,7 @@ namespace AppTripCliente.ViewModel.HomeViewModel
             UserDialogs.Instance.HideLoading();
             if (IsValid)
             {
+                await RefreshPage();
                 await DisplayAlert("Exito", "Se ha confirmado tu viaje, en breve nos pondremos en contacto contigo", "ok");
             }
             else
@@ -117,6 +111,7 @@ namespace AppTripCliente.ViewModel.HomeViewModel
                 UserDialogs.Instance.HideLoading();
                 if (IsValid)
                 {
+                    await RefreshPage();
                     await DisplayAlert("Exito", "Viaje rechazado", "ok");
                 }
                 else
@@ -126,15 +121,35 @@ namespace AppTripCliente.ViewModel.HomeViewModel
             }
 
         }
+
+        public async Task RefreshPage()
+        {
+            isRefreshing = true;
+            await Task.Delay(500);
+            var list = await data.GetAllTripQuote();
+            if(list != null)
+            {
+                if (list.Count != 0)
+                {
+                    TripList = list;
+                    Hpage.ChangePage(true);
+                }
+                else
+                {
+                    Hpage.ChangePage(false);
+                }
+            }
+            isRefreshing = false;
+        }
         #endregion
 
         #region Commands
         public ICommand GoToQuoteTripCommand => new Command(async () => await GoToQuoteTrip());
         public ICommand GoToPendingTripsCommand => new Command(async () => await GoToPendingTrips());
-        public ICommand GoToWithQuotesTripPageCommand => new Command(async () => await GoToWithQuotesTripPage());
         public ICommand GoToTripDetailCommand => new Command<TripModel>(async (m) => await GoToTripDetail(m));
         public ICommand TripConfirmCommand => new Command<TripModel>(async (m) => await TripConfirm(m));
         public ICommand TripRejectedCommand => new Command<TripModel>(async (m) => await TripRejected(m));
+        public ICommand RefreshPageCommand => new Command(async () => await RefreshPage());
         #endregion
     }
 }

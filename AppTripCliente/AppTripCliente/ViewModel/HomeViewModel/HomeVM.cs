@@ -5,7 +5,6 @@ using AppTripCliente.View.Home;
 using AppTripCliente.View.Services;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -59,7 +58,15 @@ namespace AppTripCliente.ViewModel.HomeViewModel
         {
             UserDialogs.Instance.ShowLoading("Cargando");
             await Task.Delay(500);
-            await Navigation.PushModalAsync(new PendingTrips());
+            var test = await data.GetAllTripQuote();
+            if(test != null)
+            {
+                await Navigation.PushModalAsync(new PendingTrips());
+            }
+            else
+            {
+                await DisplayAlert("Error", "Conectate a internet", "ok");
+            }
             UserDialogs.Instance.HideLoading();
         }
 
@@ -132,12 +139,16 @@ namespace AppTripCliente.ViewModel.HomeViewModel
                 if (list.Count != 0)
                 {
                     TripList = list;
-                    Hpage.ChangePage(true);
+                    Hpage.ChangePage(true, true);
                 }
                 else
                 {
-                    Hpage.ChangePage(false);
+                    Hpage.ChangePage(false, true);
                 }
+            }
+            else
+            {
+                Hpage.ChangePage(false, false);
             }
             isRefreshing = false;
         }

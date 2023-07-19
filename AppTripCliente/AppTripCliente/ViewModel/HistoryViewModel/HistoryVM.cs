@@ -28,7 +28,6 @@ namespace AppTripCliente.ViewModel.HistoryViewModel
         #region Variables
         History historypage;
         string _isrefreshing = "False";
-        bool flag = false;
         List<TripModel> _list;
         #endregion
 
@@ -57,12 +56,16 @@ namespace AppTripCliente.ViewModel.HistoryViewModel
                 if (list.Count != 0)
                 {
                     HistoryList = list;
-                    historypage.ChangeView(true);
+                    historypage.ChangeView(true, true);
                 }
                 else
                 {
-                    historypage.ChangeView(false);
+                    historypage.ChangeView(false, true);
                 }
+            }
+            else
+            {
+                historypage.ChangeView(false, false);
             }
             isRefreshing = "False";
         }

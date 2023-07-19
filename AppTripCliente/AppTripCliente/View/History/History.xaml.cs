@@ -20,16 +20,24 @@ namespace AppTripCliente.View.History
 			BindingContext = new HistoryVM(Navigation, this);
 		}
 
-		public void ChangeView(bool flag)
+		public void ChangeView(bool flag, bool CheckInternet)
 		{
-			if (flag)
+			if (CheckInternet)
 			{
-				jijiji.Content = new WithHistory();
+                if (flag)
+                {
+                    jijiji.Content = new WithHistory();
+                }
+                else
+                {
+                    jijiji.Content = new WithoutHistory();
+                }
 			}
 			else
 			{
-				jijiji.Content = new WithoutHistory();
-			}
+				jijiji.Content = new CheckInternet();
+            }
+			
 		}
 	}
 }

@@ -14,7 +14,6 @@ namespace AppTripCliente.ViewModel.ServicesVIewModel
     public class QuoteTripVM : BaseViewModel
     {
         private AccountData user = null;
-        private User DataUser = null;
         private QuoteTripData tripData = null;
         #region Constructor
         public QuoteTripVM(INavigation navigation, string Option)
@@ -22,9 +21,7 @@ namespace AppTripCliente.ViewModel.ServicesVIewModel
             Navigation = navigation;
             OptionQuote = Option;
             user = new AccountData();
-            DataUser = new User();
-            tripData = new QuoteTripData();
-            GetDataUser();
+            tripData = new QuoteTripData();;
         }
         #endregion
 
@@ -184,9 +181,10 @@ namespace AppTripCliente.ViewModel.ServicesVIewModel
         }
         public void WithAccount()
         {
-            
-            Name = DataUser.Name + " " +DataUser.LastName;
-            PhoneNumber = DataUser.PhoneNumber;
+            var name = SecureStorage.GetAsync("NameUser").Result;
+            var phone = SecureStorage.GetAsync("PhoneUser").Result;
+            Name = name;
+            PhoneNumber = phone;
             Enable = "False";
 
             BackgroudColorBtn1 = "#455968";
@@ -210,11 +208,6 @@ namespace AppTripCliente.ViewModel.ServicesVIewModel
             BackgroudColorBtn2 = "#455968";
             BorderColorBtn2 = "#455968";
             TextColorBtn2 = "white";
-        }
-        public async void GetDataUser()
-        {
-            var userData = await user.GetUser();
-            DataUser = userData;
         }
         public async Task QuestionDateTimeStart()
         {

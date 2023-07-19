@@ -16,16 +16,24 @@ namespace AppTripCliente.View.Home
 			BindingContext = new HomeVM(Navigation, this);
 		}
 
-		public void ChangePage(bool flag)
+		public void ChangePage(bool flag , bool checkInternet)
 		{
-			if (flag)
+			if (checkInternet)
 			{
-                QuotesView.Content = new WithQuotes();
+                if (flag)
+                {
+                    QuotesView.Content = new WithQuotes();
+                }
+                else
+                {
+                    QuotesView.Content = new WithoutQuotes();
+                }
 			}
 			else
 			{
-                QuotesView.Content = new WithoutQuotes();
-            }
+				QuotesView.Content = new WithoutInternet();
+			}
+			
 		}
     }
 }

@@ -35,6 +35,7 @@ namespace AppTripCliente.Firebase
             if (!string.IsNullOrEmpty(token.FirebaseToken))
             {
                 await SecureStorage.SetAsync("UserID", user.LocalId);
+                await SecureStorage.SetAsync("Token", token.FirebaseToken);
                 return token.FirebaseToken;
             }
             else

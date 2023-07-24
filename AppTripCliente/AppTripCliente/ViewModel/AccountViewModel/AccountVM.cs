@@ -106,6 +106,7 @@ namespace AppTripCliente.ViewModel.AccountViewModel
                 await SecureStorage.SetAsync("EmailUser", "");
                 await SecureStorage.SetAsync("PhoneUser", "");
                 await SecureStorage.SetAsync("Password", "");
+                await SecureStorage.SetAsync("Token", "");
                 Application.Current.MainPage = new NavigationPage(new Login());
                 UserDialogs.Instance.HideLoading();
             }
@@ -158,6 +159,7 @@ namespace AppTripCliente.ViewModel.AccountViewModel
                         await SecureStorage.SetAsync("EmailUser", "");
                         await SecureStorage.SetAsync("PhoneUser", "");
                         await SecureStorage.SetAsync("Password", "");
+                        await SecureStorage.SetAsync("Token", "");
                         Application.Current.MainPage = new NavigationPage(new Login());
                     }
                     else

@@ -1,5 +1,6 @@
 ﻿using AppTripCliente.Conection;
 using AppTripCliente.Model;
+using Firebase.Auth;
 using Firebase.Database.Query;
 using System;
 using System.Threading.Tasks;

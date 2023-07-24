@@ -5,6 +5,7 @@ using AppTripCliente.View.Login;
 using System;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace AppTripCliente.ViewModel.LoginViewModel
@@ -66,6 +67,8 @@ namespace AppTripCliente.ViewModel.LoginViewModel
 
                 if (!string.IsNullOrEmpty(token))
                 {
+                    await SecureStorage.SetAsync("EmailUser", Email);
+                    await SecureStorage.SetAsync("Password", Password);
                     await Navigation.PushAsync(new PageEmpty());
                     await Task.Delay(2000);
                     Application.Current.MainPage = new TabbedPageContainer();

@@ -8,6 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace AppTripCliente.ViewModel.LoginViewModel
@@ -156,6 +157,8 @@ namespace AppTripCliente.ViewModel.LoginViewModel
                     string id = await userRepository.Register(Email, Password);
                     if (id != "")
                     {
+                        await SecureStorage.SetAsync("EmailUser", Email);
+                        await SecureStorage.SetAsync("Password", Password);
                         newUser.IdUser = id;
                         await registerdata.InsertUser(newUser);
 
